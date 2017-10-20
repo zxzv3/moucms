@@ -28,4 +28,57 @@
 		background-color: #f9f9f9;
 		border-color: #e4e5e7
     }
+   
+    i{
+        margin-right:10px;
+    }
+
+
+    &.loading{
+        opacity:0.6!important;
+        cursor: no-drop!important;
+        i{  
+            &:before{
+                content: "\f110";
+            }
+            animation: fa-spin 2s infinite linear;
+        }
+    }
+    &.danger{
+        border:none;
+        background-color:#ed3f14;
+        color:#fff;
+    }
+    &.success{
+        border:none;
+        background-color:#19be6b;
+        color:#fff;
+    }
+    &.warning{
+        border:none;
+        background-color:#ff9900;
+        color:#fff;
+    }
+
+    &.active , &.fezocms{
+        border:none;
+        background-color:#1E9FFF;
+        color:#fff;
+    }
+
+
+
+
+    &:hover{
+        opacity:0.8;
+        // color:#1E9FFF;
+        // border:1px solid #1E9FFF;
+    }
+    &.blue-o{
+        background-color: transparent;
+        border:1px solid #1E9FFF;
+        color:#1E9FFF;
+    }
+
+
 }

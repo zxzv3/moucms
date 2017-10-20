@@ -257,3 +257,45 @@ textarea {
   background-color: #f9f9f9;
   border-color: #e4e5e7;
 }
+.btn i {
+  margin-right: 10px;
+}
+.btn.loading {
+  opacity: 0.6!important;
+  cursor: no-drop !important;
+}
+.btn.loading i {
+  animation: fa-spin 2s infinite linear;
+}
+.btn.loading i:before {
+  content: "\f110";
+}
+.btn.danger {
+  border: none;
+  background-color: #ed3f14;
+  color: #fff;
+}
+.btn.success {
+  border: none;
+  background-color: #19be6b;
+  color: #fff;
+}
+.btn.warning {
+  border: none;
+  background-color: #ff9900;
+  color: #fff;
+}
+.btn.active,
+.btn.fezocms {
+  border: none;
+  background-color: #1E9FFF;
+  color: #fff;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+.btn.blue-o {
+  background-color: transparent;
+  border: 1px solid #1E9FFF;
+  color: #1E9FFF;
+}
