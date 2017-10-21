@@ -23,8 +23,8 @@
 
 			<div class="item verification">
 				<span><i class="iconfont icon-yanzhengma1" style=""></i></span>
-				<input type="password" api-param-name="password" name="密码" max="16" min="5" placeholder="请输入右侧的验证码">
-				<img src="http://www.hfls122.com:88/verification/verification/code" alt="">
+				<input type="text" api-param-name="verification" name="验证码" max="4" min="4" placeholder="请输入右侧的验证码">
+				<img src="./verification?rand=<?=time()?>" onclick="$(this).attr('src' , './verification?rand=' + Math.random())">
 			</div>
 			<button class="btn fezocms" api-event="submit">登录账号</button>
 		</div>

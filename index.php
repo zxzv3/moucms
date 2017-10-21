@@ -1,5 +1,6 @@
 <?php
 define('ADMIN_TEMPLATE', 'admin');
+define('ADMIN_INTERFACE_URI', 'api/admin');
 
 
 /**
