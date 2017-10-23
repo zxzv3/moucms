@@ -1,4 +1,5 @@
 <?php
+
 class interface_lib extends CI_Controller{
 
 	public function __construct($parent_name , $admin_interface_uri){
@@ -15,6 +16,9 @@ class interface_lib extends CI_Controller{
 	 * @param  [type] $params [description]
 	 */
 	public function _remap($method , $params){
+
+
+
 		$this->load->model('Interface_model');
 
 		$interface_params = $this->Interface_model->get_params("{$this->parent_name}/{$method}");
@@ -35,9 +39,18 @@ class interface_lib extends CI_Controller{
 		$this->load->library('Standard');
 		$this->standard->check($interface_params);
 
-		$interface_params = (object) $interface_params;
 
 
-		method_exists($this, $method) ? $this->$method() : show_404();
+		$temp = (object) array();
+		foreach ($interface_params as $key => $value) {
+			$temp->$key = $value['value'];
+		}
+
+		method_exists($this, $method) ? $this->$method($temp) : show_404();
+	
+
+
 	}
+
+
 }

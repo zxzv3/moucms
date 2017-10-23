@@ -1,3 +1,4 @@
+@import '../bin/_animation.less';
 html,body{
 	height: 100%;
 	width: 100%;
@@ -10,8 +11,8 @@ input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 .login{
-	/* .flipInY();
-	.animation(flipInY 1s ease-in-out); */
+	.fadeInDown();
+	.animation(fadeInDown 0.5s ease-in-out);
 	width: 400px;
 	background-image : none ;
 	border-radius: 10px;
@@ -19,7 +20,7 @@ input:-webkit-autofill {
 	margin:auto;
 	position: absolute;
 	left:0;
-	top:-13%;
+	top:-16%;
 	bottom:0;
 	z-index: 999999;
 	right: 0;
@@ -61,6 +62,12 @@ input:-webkit-autofill {
 		float: left;
 		width: 100%;
 		position: relative;
+
+		&:hover span{
+			.bounce(0.9px;bounce);
+			.animation(bounce 0.3s ease-in-out);
+			//color:#1E9FFF
+		}
 		span{
 			left:9px;
 			top:4.1px;
@@ -69,6 +76,7 @@ input:-webkit-autofill {
 			color:#777;
 			border-radius: 5px;
 			i{
+
 				font-size: 21px;
 			}
 		}
