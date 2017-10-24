@@ -2,9 +2,8 @@
 
 class interface_lib extends CI_Controller{
 
-	public function __construct($parent_name , $admin_interface_uri){
-		$parent_name = strtolower($parent_name);
-		$this->parent_name = "{$admin_interface_uri}/{$parent_name}";
+	public function __construct($option){
+		$this->option = $option;
 		parent::__construct();
 	}
 
@@ -17,11 +16,13 @@ class interface_lib extends CI_Controller{
 	 */
 	public function _remap($method , $params){
 
-
-
 		$this->load->model('Interface_model');
 
-		$interface_params = $this->Interface_model->get_params("{$this->parent_name}/{$method}");
+		$interface_params = $this->Interface_model->get_params(array(
+			'method' => $method,
+			'file' => $this->option['file'],
+			'group' => $this->option['group'],
+		));
 
 		switch ($interface_params) {
 			case -1 : Moucms::end(false , '00002 抱歉，该功能管理员尚未在后台备案，暂时无法使用'); break;
@@ -40,16 +41,12 @@ class interface_lib extends CI_Controller{
 		$this->standard->check($interface_params);
 
 
-
 		$temp = (object) array();
 		foreach ($interface_params as $key => $value) {
 			$temp->$key = $value['value'];
 		}
 
 		method_exists($this, $method) ? $this->$method($temp) : show_404();
-	
-
-
 	}
 
 

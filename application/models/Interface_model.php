@@ -13,10 +13,12 @@ class Interface_model extends Base_model {
 	 * @param  [type] $name [description]
 	 * @return [type]       [description]
 	 */
-	public function get_params($name){
-		if( ! $this->is_exist(array( 'name' => $name )) ) return -1;
+	public function get_params($params = array()){
 
-		$params_data = $this->get(array('name' => $name));
+		print_r($params);
+		if( ! $this->is_exist($params) ) return -1;
+
+		$params_data = $this->get($params);
 		if($params_data['open'] == 1) return -2;
 
 		return $params_data['params'] == '' ? array() : json_decode($params_data['params'] , true);

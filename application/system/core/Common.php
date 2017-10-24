@@ -617,18 +617,27 @@ if ( ! function_exists('_error_handler'))
 		$_error =& load_class('Exceptions', 'core');
 		$_error->log_exception($severity, $message, $filepath, $line);
 
+
+
 		// Should we display the error?
 		if (str_ireplace(array('off', 'none', 'no', 'false', 'null'), '', ini_get('display_errors')))
 		{
 			$_error->show_php_error($severity, $message, $filepath, $line);
 		}
 
+		require_once APPPATH . 'hooks/AnomalyCapture.php';
+		(new AnomalyCapture())->capture(array(
+			'type' => $severity,
+			'message' => $message,
+			'file' => $filepath,
+			'line' => $line,
+		) , $is_error);
 		// If the error is fatal, the execution of the script should be stopped because
 		// errors can't be recovered from. Halting the script conforms with PHP's
 		// default error handling. See http://www.php.net/manual/en/errorfunc.constants.php
 		if ($is_error)
 		{
-			exit(1); // EXIT_ERROR
+			//exit(1); // EXIT_ERROR
 		}
 	}
 }
@@ -652,6 +661,8 @@ if ( ! function_exists('_exception_handler'))
 		$_error =& load_class('Exceptions', 'core');
 		$_error->log_exception('error', 'Exception: '.$exception->getMessage(), $exception->getFile(), $exception->getLine());
 
+
+
 		is_cli() OR set_status_header(500);
 		// Should we display the error?
 		if (str_ireplace(array('off', 'none', 'no', 'false', 'null'), '', ini_get('display_errors')))
@@ -659,7 +670,16 @@ if ( ! function_exists('_exception_handler'))
 			$_error->show_exception($exception);
 		}
 
-		exit(1); // EXIT_ERROR
+		require_once APPPATH . 'hooks/AnomalyCapture.php';
+		(new AnomalyCapture())->capture(array(
+			'type' => '',
+			'message' => $exception->getMessage(),
+			'file' => $exception->getFile(),
+			'line' => $exception->getLine(),
+			'line' => $exception->getLine(),
+			'trace' => $exception->getTrace()
+		) , true);
+		//exit(1); // EXIT_ERROR
 	}
 }
 
@@ -683,6 +703,10 @@ if ( ! function_exists('_shutdown_handler'))
 	function _shutdown_handler()
 	{
 		$last_error = error_get_last();
+		// require_once APPPATH . 'hooks/AnomalyCapture.php';
+		// (new AnomalyCapture())->capture($last_error);
+
+
 		if (isset($last_error) &&
 			($last_error['type'] & (E_ERROR | E_PARSE | E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_COMPILE_WARNING)))
 		{

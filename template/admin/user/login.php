@@ -5,7 +5,7 @@
 		<div id="particles-js"></div>
 	</div>
 
-	<div class="login" api-name="Admin_user/Login">
+	<div class="login" api-name="Admin_user/user/Login">
 		<div class="top-header">
 			<h1>moucms</h1> <br>
 			<span>更高效更便捷的快速开发系统</span>
@@ -61,7 +61,7 @@
 			container.style.top = '200px';
 			document.body.appendChild( container );
 
-			camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 10000 );
+			camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 25000 );
 			camera.position.z = 1400;
 
 			scene = new THREE.Scene();
