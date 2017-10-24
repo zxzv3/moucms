@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-10-23 18:05:05
+Date: 2017-10-24 17:36:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,10 +33,30 @@ CREATE TABLE `moucms_admin_user` (
   `login_count` int(11) DEFAULT NULL,
   `state` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of moucms_admin_user
+-- ----------------------------
+INSERT INTO `moucms_admin_user` VALUES ('1', '23', null, null, null, null, null, null, null, null, null, null);
+
+-- ----------------------------
+-- Table structure for moucms_error_log
+-- ----------------------------
+DROP TABLE IF EXISTS `moucms_error_log`;
+CREATE TABLE `moucms_error_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `level` int(2) DEFAULT NULL,
+  `from_interface` int(11) DEFAULT NULL,
+  `from_file` varchar(1024) DEFAULT NULL,
+  `message` varchar(1024) DEFAULT NULL,
+  `path` varchar(1024) DEFAULT NULL,
+  `line` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of moucms_error_log
 -- ----------------------------
 
 -- ----------------------------
@@ -45,7 +65,10 @@ CREATE TABLE `moucms_admin_user` (
 DROP TABLE IF EXISTS `moucms_interface`;
 CREATE TABLE `moucms_interface` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(512) DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `method` varchar(255) DEFAULT NULL,
+  `group` varchar(512) DEFAULT NULL,
+  `uri` varchar(512) DEFAULT NULL,
   `description` varchar(64) DEFAULT NULL,
   `open` tinyint(1) DEFAULT NULL COMMENT '0 开放\r\n1 关闭',
   `type` int(2) DEFAULT NULL COMMENT '0 不做验证\r\n1 密码\r\n2 用户名\r\n3 手机号\r\n4 身份证\r\n5 邮箱号码\r\n6 图片\r\n7 验证码\r\n8 数字\r\n9 字母\r\n10 汉字\r\n11 英文',
@@ -58,7 +81,7 @@ CREATE TABLE `moucms_interface` (
 -- ----------------------------
 -- Records of moucms_interface
 -- ----------------------------
-INSERT INTO `moucms_interface` VALUES ('1', 'api/admin/Admin_user/login', null, '0', null, null, '0', '{\"username\":{\"max\":1,\"min\":10}}');
+INSERT INTO `moucms_interface` VALUES ('1', 'Admin_user.php', 'login', 'api/admin/user', 'api/admin/admin_user/login', null, '0', null, null, '0', '{\"username\":{\"max\":1,\"min\":10}}');
 
 -- ----------------------------
 -- Table structure for moucms_setting
