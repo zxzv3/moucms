@@ -2,9 +2,14 @@
 
 class interface_lib extends CI_Controller{
 
-	public function __construct($option){
-		$this->option = $option;
+	public function __construct(){
+		$this->option = (object) array();
 		parent::__construct();
+
+		$this->option->group = $this->uri->slash_rsegment(1 , 'leading') . $this->uri->slash_rsegment(2 , 'leading');
+		$this->option->group = str_replace($this->option->group , '' , $this->uri->ruri_string());
+
+		$this->option->file = ucfirst($this->uri->rsegment(1)) . ".php";
 	}
 
 
@@ -20,15 +25,14 @@ class interface_lib extends CI_Controller{
 
 		$interface_params = $this->Interface_model->get_params(array(
 			'method' => $method,
-			'file' => $this->option['file'],
-			'group' => $this->option['group'],
+			'file' => $this->option->file,
+			'group' => $this->option->group,
 		));
 
 		switch ($interface_params) {
 			case -1 : Moucms::end(false , '00002 抱歉，该功能管理员尚未在后台备案，暂时无法使用'); break;
 			case -2 : Moucms::end(false , '00003 抱歉，该功能管理员尚未开放，暂时无法使用'); break;
 		}
-
 
 		// Here, get the parameters passed by the user and put them into the array
 		foreach ($interface_params as $key => &$value) {

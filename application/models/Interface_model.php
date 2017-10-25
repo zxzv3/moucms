@@ -15,7 +15,6 @@ class Interface_model extends Base_model {
 	 */
 	public function get_params($params = array()){
 
-		print_r($params);
 		if( ! $this->is_exist($params) ) return -1;
 
 		$params_data = $this->get($params);

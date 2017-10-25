@@ -5,7 +5,7 @@
 		<div id="particles-js"></div>
 	</div>
 
-	<div class="login" api-name="Admin_user/user/Login">
+	<div class="login" api-name="Admin_user/Login">
 		<div class="top-header">
 			<h1>moucms</h1> <br>
 			<span>更高效更便捷的快速开发系统</span>
