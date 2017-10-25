@@ -81,9 +81,9 @@ var ApiRequest = (function(ApiRequestList){
 	}
 
 
-	modules.prototype.set = function(fun){
-		ApiRequestData.option.error = fun.error;
-		ApiRequestData.option.success = fun.success;
+	modules.prototype.set = function(success , error){
+		ApiRequestData.option.success = success;
+		ApiRequestData.option.error = error;
 		return this;
 	}
 

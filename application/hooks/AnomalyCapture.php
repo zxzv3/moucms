@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 用于错误记录
+ */
 class AnomalyCapture{
 
 	function capture($last_error , $is_error = false){
@@ -29,7 +31,7 @@ class AnomalyCapture{
 
 		$trace = array();
 		if(isset($last_error['trace'])){
-			
+
 			foreach ($last_error['trace'] as $key => $value) {
 				if(isset($value['file'])){
 					array_push($trace , array(
@@ -51,7 +53,7 @@ class AnomalyCapture{
 			'file' => $last_error['file'],
 			'line' => $last_error['line'],
 			'uri' => $CI->uri->ruri_string(),
-			'from_interface' => $interface_data['id'] ,
+			'from_interface' => isset($interface_data['id']) ? $interface_data['id'] : 0 ,
 			'error_time' => date('Y-m-d H:i:s'),
 			'backtrace' => json_encode($trace),
 		));

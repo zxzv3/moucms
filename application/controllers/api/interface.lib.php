@@ -35,10 +35,11 @@ class interface_lib extends CI_Controller{
 		}
 
 		// Here, get the parameters passed by the user and put them into the array
-		foreach ($interface_params as $key => &$value) {
+		foreach ($interface_params as $key => $value) {
 			if( ! isset($_POST[$key])) Moucms::end(false , "00001 找不到指定参数 : '{$key}'");
-			$value['value'] = $this->input->post($key);
+			$interface_params[$key]['value'] = $this->input->post($key);
 		}
+
 
 
 		$this->load->library('Standard');
@@ -46,6 +47,7 @@ class interface_lib extends CI_Controller{
 
 
 		$temp = (object) array();
+
 		foreach ($interface_params as $key => $value) {
 			$temp->$key = $value['value'];
 		}

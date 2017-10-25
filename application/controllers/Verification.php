@@ -30,7 +30,7 @@ class Verification extends CI_Controller{
 		/* 生成验证码序列 */
 		define("CAPTCHA_NUMCHARS", 4);  //验证码长度
 		$pass_phrase = $this->random(4);              //验证码内容
-		$_SESSION['verification_a'] = $pass_phrase;
+		$_SESSION['verification_admin'] = $pass_phrase;
 		
 		$width = 70;
 		$height = 31;

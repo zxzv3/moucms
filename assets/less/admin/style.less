@@ -1,2 +1,55 @@
 @import '../bin/normalize.less';
 @import '../bin/button.less';
+@import '../bin/popup.less';
+
+body{background-color: #f2f2f2;}
+body,html{height: 100%;}
+.menu{
+	background-color: #fff;
+	float: left;
+	overflow: hidden;
+	height: 100%;
+	padding:20px 27px;
+	width: 160px;
+
+	.item{
+		float: left;
+		width: 100%;
+		position: relative;
+		padding-left: 28px;
+		margin-top:3px;
+		i{
+			left: 4px;
+			top:14px;
+			position: absolute;
+			font-size: 13px;
+			color:#777;
+		}
+		.fa-angle-down{
+			right: -5px;
+			left: auto;
+		}
+		.top-menu{
+			padding:10px 0;
+			margin-bottom: 3px;
+		}
+		.song-menu{
+			// display: none;
+
+			float: left;
+			width: 100%;
+			padding:0px 0 7px 1px;
+			li{
+				color:#888;
+				font-size: 12px;
+				float: left;
+				width: 100%;
+				padding:9px 0;
+				&:hover{
+					color: #2d8cf0;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
