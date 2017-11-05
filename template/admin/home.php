@@ -1,120 +1,29 @@
+	<link rel="stylesheet" href="./assets/css/admin/home.css">
 </head>
 <body>
-	<div class="top-header">
-		<div class="logo">
-			moucms
+	<?php $this->load->view(ADMIN_TEMPLATE . '/template/top-header');?>
+	<?php $this->load->view(ADMIN_TEMPLATE . '/template/menu');?>
+
+	<div class="warpper">
+		<div class="top">
+			<div class="box user-data">
+				<img src="https://tvax4.sinaimg.cn/crop.69.0.281.281.180/006qCLOdly8fjzfrep5lij30dw07tgnt.jpg" alt="">
+				<div class="data">
+					<h2>您好，<?=$_SESSION['admin_user']['username']?> <a href="">修改资料</a></h2>
+					<hr>
+					<p>上次登录IP：127.168.0.1 (本地局域网)</p>
+					<p>上次登录时间：2017年10月10日 10点10分10秒</p>
+				</div>
+			</div>
+			<div class="box">2</div>
+		</div>
+		<div class="box">
+			<h1>访问统计报表</h1>
+		</div>
+		<div class="box">
+			<h1>订单统计报表</h1>
 		</div>
 	</div>
-	<div class="menu">
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-home"></i>首页内容<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>后台首页</li>
-				</ul>
-			</div>
-		</div>
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-user"></i>管理用户<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>管理列表</li>
-					<li>管理分组</li>
-					<li>管理设置</li>
-				</ul>
-			</div>
-		</div>
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-user"></i>用户管理<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>用户列表</li>
-					<li>用户分组</li>
-					<li>用户配置</li>
-				</ul>
-			</div>
-		</div>
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-user"></i>内容管理<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>文章列表</li>
-					<li>栏目列表</li>
-				</ul>
-			</div>
-		</div>
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-user"></i>通知管理<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>私信管理</li>
-					<li>消息通知</li>
-					<li>信息推送</li>
-				</ul>
-			</div>
-		</div>
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-user"></i>接口管理<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>接口列表</li>
-					<li>接口设置</li>
-					<li>接口日志</li>
-				</ul>
-			</div>
-		</div>
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-user"></i>超级表单<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>表单列表</li>
-					<li>表单设置</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-user"></i>系统设置<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>全局设置</li>
-					<li>邮箱设置</li>
-					<li>自定设置</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="item">
-			<div class="top-menu">
-				<i class="fa fa-user"></i>日志管理<i class="fa fa-angle-down"></i>
-			</div>
-			<div class="song-menu">
-				<ul>
-					<li>系统日志</li>
-				</ul>
-			</div>
-		</div>
-
-
-
-	</div>
-
 
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/footer');?>
 </body>

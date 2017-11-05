@@ -12,8 +12,8 @@ class Home extends CI_Controller{
 
 
 
-	public function index(){
-		Loader::view('home' , array(
-		) , ADMIN_TEMPLATE);
-	}
+	// public function index(){
+	// 	Loader::view('home' , array(
+	// 	) , ADMIN_TEMPLATE);
+	// }
 }	

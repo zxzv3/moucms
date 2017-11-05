@@ -1,0 +1,334 @@
+</head>
+<body>
+	<?php $this->load->view(ADMIN_TEMPLATE . '/template/top-header');?>
+	<?php $this->load->view(ADMIN_TEMPLATE . '/template/menu');?>
+
+
+	<div class="warpper">
+		<div class="tools">
+			<button class="btn danger" limit="User/remove" id="js-remove-all" ><i class="fa fa-trash-o"></i>删除选中用户</button>
+			<button class="btn active" id="js-create-admin-user" limit="User/create" ><i class="fa fa-user-plus"></i>添加用户</button>
+			<button class="btn" id="js-search"><i class="fa fa-search"></i>搜索筛选</button>
+			<select class="widget-switch" widgetname="search" name="from_group" value="">
+				<option value="-1">全部用户</option>
+				
+				<option value="4">钻石会员</option>
+				
+				<option value="3">黄金会员</option>
+				
+				<option value="2">白银会员</option>
+				
+				<option value="1">普通会员</option>
+				
+			</select>
+			<select class="widget-switch" widgetname="search" name="state" value="">
+				<option value="-1">全部状态</option>
+				<option value="0">正常</option>
+				<option value="1">封禁</option>
+			</select>
+
+		</div>
+		<table class="table-list">
+			<tbody><tr>
+				<th width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox"></div></th>
+				<th width="">用户帐号</th>
+				<th>最后登录时间</th>
+				<th>最后登录IP</th>
+				<th>联系手机号</th>
+				<th>联系QQ</th>
+				<!-- <th width="">成功发布</th> -->
+				<!-- <th width="">总标题数</th> -->
+				<th width="">账户数</th>
+				<th width="">图片数</th>
+				<th width="">内容数</th>
+				<th width="100">登录次数</th>
+				<th width="90">状态</th>
+				<th width="130" limit="User/edit" style="display: table-cell;">操作</th>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;268&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;2317392448&quot;,&quot;password&quot;:&quot;f4a6249a63e2bcc154db15225243660d&quot;,&quot;slat&quot;:&quot;681066&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;2317392448@qq.com&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="268"></div></td>
+				<td>2317392448</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;267&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;lsjindi&quot;,&quot;password&quot;:&quot;91742f75541a5af1df0615881a15fa71&quot;,&quot;slat&quot;:&quot;544424&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;1938868288@qq.cnm&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="267"></div></td>
+				<td>lsjindi</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>23</td>
+				<td>1</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+						
+			<tr data-data="{&quot;id&quot;:&quot;267&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;lsjindi&quot;,&quot;password&quot;:&quot;91742f75541a5af1df0615881a15fa71&quot;,&quot;slat&quot;:&quot;544424&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;1938868288@qq.cnm&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="267"></div></td>
+				<td>lsjindi</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>23</td>
+				<td>1</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+						
+			<tr data-data="{&quot;id&quot;:&quot;267&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;lsjindi&quot;,&quot;password&quot;:&quot;91742f75541a5af1df0615881a15fa71&quot;,&quot;slat&quot;:&quot;544424&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;1938868288@qq.cnm&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="267"></div></td>
+				<td>lsjindi</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>23</td>
+				<td>1</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+						
+			<tr data-data="{&quot;id&quot;:&quot;267&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;lsjindi&quot;,&quot;password&quot;:&quot;91742f75541a5af1df0615881a15fa71&quot;,&quot;slat&quot;:&quot;544424&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;1938868288@qq.cnm&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="267"></div></td>
+				<td>lsjindi</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>23</td>
+				<td>1</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+						
+			<tr data-data="{&quot;id&quot;:&quot;267&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;lsjindi&quot;,&quot;password&quot;:&quot;91742f75541a5af1df0615881a15fa71&quot;,&quot;slat&quot;:&quot;544424&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;1938868288@qq.cnm&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="267"></div></td>
+				<td>lsjindi</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>23</td>
+				<td>1</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;266&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;FAN123456789&quot;,&quot;password&quot;:&quot;9c2e017dedb9b7578ff04c6bb7ea0de3&quot;,&quot;slat&quot;:&quot;578070&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;465748083@qq.com&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;2017-11-04 14:45:10&quot;,&quot;lost_ip&quot;:&quot;182.46.145.16&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;1&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="266"></div></td>
+				<td>FAN123456789</td>
+				<td>2017-11-04 14:45:10</td>
+				<td>182.46.145.16</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>13</td>
+				<td>1</td>
+				<td>1次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;265&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;sdbly1&quot;,&quot;password&quot;:&quot;702c1e828388e96717d8256ada9355ab&quot;,&quot;slat&quot;:&quot;919003&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;332557986@qq.com&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;2017-11-03 11:50:57&quot;,&quot;lost_ip&quot;:&quot;182.46.164.139&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;1&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="265"></div></td>
+				<td>sdbly1</td>
+				<td>2017-11-03 11:50:57</td>
+				<td>182.46.164.139</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>0</td>
+				<td>0</td>
+				<td>1次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;264&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;airbft&quot;,&quot;password&quot;:&quot;bd31420b93d230ed7ba2ee43f9c6a225&quot;,&quot;slat&quot;:&quot;989343&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;123823581@qq.com&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;2017-11-04 10:02:56&quot;,&quot;lost_ip&quot;:&quot;180.152.15.17&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;5&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="264"></div></td>
+				<td>airbft</td>
+				<td>2017-11-04 10:02:56</td>
+				<td>180.152.15.17</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>90</td>
+				<td>1</td>
+				<td>5次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;263&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;fafafa888&quot;,&quot;password&quot;:&quot;860e72a0eecb45c0b82e9b73c38333d5&quot;,&quot;slat&quot;:&quot;902249&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;lwtuteng@163.com&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="263"></div></td>
+				<td>fafafa888</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;262&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;slgjt777&quot;,&quot;password&quot;:&quot;411d2d63ba1d274cf0a192177e4f30c4&quot;,&quot;slat&quot;:&quot;387402&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;168402665@qq.com&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="262"></div></td>
+				<td>slgjt777</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>2</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;261&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;yingtongtiyu&quot;,&quot;password&quot;:&quot;453348f7c21b4b6e2d4aab2b1091e333&quot;,&quot;slat&quot;:&quot;789996&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:&quot;174212&quot;,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:&quot;1509758232&quot;,&quot;phone&quot;:&quot;13798881938&quot;,&quot;qq&quot;:null,&quot;mail&quot;:&quot;13798881938@139.com&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;2017-11-05 11:27:12&quot;,&quot;lost_ip&quot;:&quot;113.80.106.83&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;3&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="261"></div></td>
+				<td>yingtongtiyu</td>
+				<td>2017-11-05 11:27:12</td>
+				<td>113.80.106.83</td>
+				<td>13798881938</td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>2</td>
+				<td>30</td>
+				<td>1</td>
+				<td>3次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;260&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;SZZYJC668&quot;,&quot;password&quot;:&quot;d8cc290165df1de036a2c172db7df681&quot;,&quot;slat&quot;:&quot;693179&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;13530139293@163.COM&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;2017-11-02 17:15:36&quot;,&quot;lost_ip&quot;:&quot;119.59.255.206&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;1&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="260"></div></td>
+				<td>SZZYJC668</td>
+				<td>2017-11-02 17:15:36</td>
+				<td>119.59.255.206</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>0</td>
+				<td>0</td>
+				<td>1次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+			<tr data-data="{&quot;id&quot;:&quot;259&quot;,&quot;nickname&quot;:null,&quot;username&quot;:&quot;hx1037041842&quot;,&quot;password&quot;:&quot;eb80c299b76296bcd3950dec1a188b30&quot;,&quot;slat&quot;:&quot;881347&quot;,&quot;repassword_rand&quot;:null,&quot;repassword_time&quot;:null,&quot;email_rand&quot;:null,&quot;phone_rand&quot;:null,&quot;email_timeout&quot;:null,&quot;phone_timeout&quot;:null,&quot;phone&quot;:null,&quot;qq&quot;:null,&quot;mail&quot;:&quot;604107138@qq.com&quot;,&quot;from_group&quot;:&quot;1&quot;,&quot;lost_time&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;lost_ip&quot;:&quot;&quot;,&quot;now_time&quot;:null,&quot;now_ip&quot;:null,&quot;count&quot;:&quot;0&quot;,&quot;state&quot;:&quot;0&quot;}">
+				<td width="50" limit="User/remove" style="display: table-cell;"><div class="widget-checkbox" data-id="259"></div></td>
+				<td>hx1037041842</td>
+				<td>从未登录</td>
+				<td>从未登录</td>
+				<td></td>
+				<td></td>
+				<!-- <td>{success_title_count}</td> -->
+				<!-- <td>{max_title_count}</td> -->
+				<td>1</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0次</td>
+				<td><span class="label success">正常</span></td>
+				<td limit="User/edit" style="display: table-cell;">
+					<i class="fa fa-eye"></i>
+					<i class="fa fa-edit" limit="User/edit" style="display: inline;"></i>
+				</td>
+			</tr>
+			
+		</tbody></table>
+	</div>
+
+	<?php $this->load->view(ADMIN_TEMPLATE . '/template/footer');?>
+</body>
+</html>

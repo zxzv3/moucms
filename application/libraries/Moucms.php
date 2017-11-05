@@ -15,6 +15,7 @@ class Moucms{
 			self::goto_login();
 			return false;
 		}
+		return true;
 	}
 
 

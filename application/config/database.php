@@ -80,7 +80,7 @@ $db['default'] = array(
 	'dsn'	=> 'pgsql:host=localhost;port=3300;dbname=moucms',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'port' => 3300,
+	'port' => 3306,
 	'password' => '',
 	'database' => 'moucms',
 	'dbdriver' => 'mysqli',

@@ -45,11 +45,13 @@ var ApiRequest = (function(ApiRequestList){
 		})();  
 
 		if(isset(ApiRequestData.option) && isset(ApiRequestData.option.event) && ApiRequestData.option.event){
+			console.log((replace("[$='$']" , [config.name.apiEvent , config.event.click])))
 			$(replace("[$='$']" , [config.name.apiEvent , config.event.click])).each(function(key , value){
+
+				console.log(value)
 
 				$(value).click(function(){
 					isset(ApiRequestData.option) && isset(ApiRequestData.option.start) ? ApiRequestData.option.start($(value).attr(config.name.eventApiName)) : '';
-
 
 					var $element;
 					$(this).parents().each(function(key , element){

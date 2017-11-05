@@ -1,0 +1,46 @@
+.top {
+  float: left;
+  width: 100%;
+}
+.top .box {
+  float: left;
+  background-color: #fefefe;
+  border-radius: 5px;
+  padding: 17px;
+  margin: 5px 10px;
+}
+.top .user-data {
+  width: 33.33%;
+}
+.top .user-data img {
+  float: left;
+  border-radius: 100%;
+  width: 90px;
+  height: 90px;
+}
+.top .user-data .data {
+  float: left;
+  margin: 4px 23px;
+  color: #666;
+}
+.top .user-data .data hr {
+  height: 1px;
+  border: none;
+  margin: 13px 0 7px 0;
+  background-color: #f2f2f2;
+}
+.top .user-data .data h2 {
+  font-weight: 400;
+  font-size: 15px;
+}
+.top .user-data .data h2 a {
+  margin-left: 7px;
+  font-size: 12px;
+  color: #2d8cf0;
+}
+.top .user-data .data p {
+  line-height: 22px;
+  width: 100%;
+  font-size: 12px;
+  color: #aaa;
+}
