@@ -16,7 +16,7 @@
 		<div class="item">
 			<i class="fa fa-user"></i>用户列表
 		</div>
-		<div class="item">
+		<div class="item" onclick="window.location.href='./{adminDir}/table'">
 			<i class="fa fa-list"></i>超级表单
 		</div>
 		<div class="item">
@@ -26,9 +26,13 @@
 	</div>
 
 	<div class="right">
-	
+
 		<div class="item">
-			<i class="fa fa-power-off"></i>
+			<i class="fa fa-lock"></i> <span>锁屏</span>
+		</div>
+				
+		<div class="item">
+			<i class="fa fa-power-off" style="font-size: 14px;"></i> <span>退出</span>
 		</div>
 	</div>
 </div>

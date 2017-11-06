@@ -4,13 +4,48 @@
 }
 .top .box {
   float: left;
-  background-color: #fefefe;
+  padding: 0;
   border-radius: 5px;
+  margin: 0px 0px 5px 0;
+}
+.top .count {
+  background-color: transparent;
+  float: left;
+  width: 66.6%;
+  padding: 0;
+  text-align: center;
+}
+.top .count .item {
+  height: 124px;
+  float: left;
   padding: 17px;
-  margin: 5px 10px;
+  background-color: #fefefe;
+  width: 24%;
+  margin-left: 1%;
+}
+.top .count .item .fa {
+  font-size: 36px;
+}
+.top .count .item h2 {
+  color: #666;
+  float: left;
+  width: 100%;
+  margin: 18px 0px 6px 0;
+  font-weight: 340;
+  font-size: 30px;
+}
+.top .count .item span {
+  float: left;
+  width: 100%;
+  color: #bbb;
 }
 .top .user-data {
   width: 33.33%;
+}
+.top .user-data .user {
+  padding: 17px;
+  background-color: #fefefe;
+  overflow: hidden;
 }
 .top .user-data img {
   float: left;
@@ -20,7 +55,7 @@
 }
 .top .user-data .data {
   float: left;
-  margin: 4px 23px;
+  margin: 4px 0px 4px 24px;
   color: #666;
 }
 .top .user-data .data hr {
@@ -43,4 +78,100 @@
   width: 100%;
   font-size: 12px;
   color: #aaa;
+}
+.todo {
+  width: 33.333%;
+  height: 288px;
+  overflow-y: hidden;
+}
+.todo .not {
+  float: left;
+  width: 100%;
+  color: #888;
+  text-align: center;
+  margin: 55px 0;
+}
+.todo .list {
+  height: 220px;
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  padding: 0px 18px 10px 0;
+  margin-top: 10px;
+}
+.todo .list li {
+  width: 100%;
+  float: left;
+  padding: 0px 0px 15px 0;
+  padding-left: 14px;
+  color: #888;
+}
+.todo .list li a {
+  color: #888;
+}
+.todo .list li a:hover {
+  color: #2d8cf0;
+}
+.todo .time {
+  font-size: 12px;
+  color: #ccc;
+  float: right;
+}
+.todo ul {
+  float: left;
+  margin-top: 12px;
+}
+.todo i {
+  margin-right: 10px;
+}
+.other {
+  width: 66.6%;
+  background-color: transparent;
+  padding: 0;
+}
+.other .other-main {
+  height: 288px;
+  background-color: #fafafa;
+  padding: 17px;
+  float: left;
+  overflow: hidden;
+  width: 99%;
+  margin-left: 1%;
+}
+.other .other-main .data {
+  float: left;
+  width: 100%;
+  margin-top: 5px;
+}
+.other .other-main .data li {
+  color: #666;
+  float: left;
+  font-size: 12px;
+  margin-right: 10px;
+  width: 22%;
+  padding-left: 25px;
+  padding-bottom: 15px;
+}
+.other .other-main .state .item {
+  border-radius: 100%;
+  height: 100px;
+  border: 2px solid #19be6b;
+  text-align: center;
+  width: 100px;
+  margin: 26px 10px;
+  overflow: hidden;
+  float: left;
+}
+.other .other-main .state .item .item-main {
+  margin-top: 24px;
+}
+.other .other-main .state .item .item-main h2 {
+  color: #19be6b;
+  font-size: 25px;
+  font-weight: 400;
+  padding-bottom: 3px;
+}
+.other .other-main .state .item .item-main span {
+  color: #aaa;
+  font-size: 12px;
 }

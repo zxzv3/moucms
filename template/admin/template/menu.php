@@ -5,7 +5,7 @@
 		</div>
 		<div class="song-menu">
 			<ul>
-				<li>后台首页</li>
+				<li><a href="./{adminDir}">后台首页</a></li>
 			</ul>
 		</div>
 	</div>
@@ -16,7 +16,7 @@
 		<div class="song-menu">
 			<ul>
 				<li>管理列表</li>
-				<li>管理分组</li>
+				<li>管理权限</li>
 				<li>管理设置</li>
 			</ul>
 		</div>
@@ -30,6 +30,18 @@
 				<li>用户列表</li>
 				<li>用户分组</li>
 				<li>用户配置</li>
+			</ul>
+		</div>
+	</div>
+	<div class="item">
+		<div class="top-menu">
+			<i class="fa fa-user"></i>工单管理
+		</div>
+		<div class="song-menu">
+			<ul>
+				<li>工单列表</li>
+				<li>工单栏目</li>
+				<li>工单设置</li>
 			</ul>
 		</div>
 	</div>
