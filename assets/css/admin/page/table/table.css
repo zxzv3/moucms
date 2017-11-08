@@ -3,6 +3,47 @@
   min-height: 100%;
   padding-left: 305px;
 }
+.warpper .setting {
+  float: left;
+  width: 450px;
+}
+.warpper .setting th {
+  padding: 0;
+}
+.warpper .setting td {
+  color: #666;
+  padding: 15px 20px;
+}
+.warpper .setting td input[type='text'],
+.warpper .setting td select {
+  color: #555;
+  width: 230px;
+  margin: 0;
+}
+.warpper .setting td select {
+  padding-left: 0;
+  margin-left: -3px;
+}
+.warpper .setting td .item {
+  float: left;
+  margin-right: 15px;
+}
+.warpper .setting td .item .widget-checkbox {
+  position: relative;
+  top: 1px;
+  margin-right: 4px;
+}
+.warpper h1 {
+  margin-bottom: 24px;
+}
+.warpper .list {
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+}
+.warpper .list th {
+  background-color: #f2f2f2;
+}
 .warpper-menu {
   min-height: 100%;
   position: absolute;
@@ -23,6 +64,7 @@
   width: 100%;
 }
 .warpper-menu .item .top-menu i {
+  color: #666;
   position: relative;
   top: 0.5px;
   margin-right: 5px;
@@ -40,4 +82,36 @@
   float: left;
   width: 100%;
   margin: 9px 0;
+}
+.setting {
+  max-width: 840px;
+}
+.setting select {
+  border: 1px solid #fff;
+  padding: 3px 0px;
+  width: 250px;
+  outline: none;
+  cursor: pointer;
+}
+.setting input[type='checkbox'] {
+  padding: 0;
+}
+.setting td {
+  font-size: 14px;
+  padding: 15px 20px;
+  color: #555;
+  height: 49px;
+  border-bottom: 1px dotted #eee!important;
+}
+.setting th {
+  padding: 13px 20px;
+  fbackground-color: #f7f7f7;
+}
+.setting input[type='text'] {
+  color: #555;
+  border: none;
+  outline: none;
+  margin-top: 4px;
+  padding: 0px 0;
+  width: 300px;
 }

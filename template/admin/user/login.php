@@ -6,11 +6,11 @@
 	</div>
 
 	<div class="login" api-name="Admin_user/Login">
-		<div class="top-header">
+		<div class="login-header">
 			<h1>moucms</h1> <br>
 			<span>更高效更便捷的快速开发系统</span>
 		</div>
-		<div class="box">
+		<div class="main">
 			<div class="item">
 				<span><i class="iconfont icon-usered"></i></span>
 				<input type="text" api-param-name="username" name="用户名" max="16" min="5" placeholder="请输入您的管理员账号">
