@@ -6,61 +6,20 @@
 
 	<div class="warpper">
 		<div class="warpper-menu">
+			{Table_group_lists}
 			<div class="item">
 				<div class="top-menu">
-					<i class="fa fa-plus-square-o"></i> 管理用户
+					<i class="fa fa-plus-square-o"></i> {name}
 				</div>
 				<div class="song-menu">
 					<ul>
-						<li>管理列表</li>
+						{song}
+						<li><a onclick="window.location.href=adminDir + '/table/home/edit?id={id}'">{name}</a></li>
+						{/song}
 					</ul>
 				</div>
 			</div>
-			<div class="item">
-				<div class="top-menu">
-					<i class="fa fa-plus-square-o"></i> 内容管理
-				</div>
-				<div class="song-menu">
-					<ul>
-						<li>文章管理</li>
-						<li>栏目管理</li>
-					</ul>
-				</div>
-			</div>
-			<div class="item">
-				<div class="top-menu">
-					<i class="fa fa-plus-square-o"></i> 内容管理
-				</div>
-				<div class="song-menu">
-					<ul>
-						<li>文章管理</li>
-						<li>栏目管理</li>
-					</ul>
-				</div>
-			</div>
-			<div class="item">
-				<div class="top-menu">
-					<i class="fa fa-plus-square-o"></i> 内容管理
-				</div>
-				<div class="song-menu">
-					<ul>
-						<li>文章管理</li>
-						<li>栏目管理</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="item">
-				<div class="top-menu">
-					<i class="fa fa-plus-square-o"></i> 内容管理
-				</div>
-				<div class="song-menu">
-					<ul>
-						<li>文章管理</li>
-						<li>栏目管理</li>
-					</ul>
-				</div>
-			</div>
+			{/Table_group_lists}
 		</div>
 		<!-- <div class="tools">
 			<button class="btn fezocms"><i class="fa fa-plus"></i>创建超级表单组</button>
@@ -77,7 +36,9 @@
 					<td style="padding:10px 20px;">
 						<select api-param-name='from_table_group'>
 							<option value="0">请选择所属表单组</option>
-							<!-- <option value="1">管理用户</option> -->
+							{Table_group_lists}
+							<option value="{id}">{name}</option>
+							{/Table_group_lists}
 						</select>
 						<i class="iconfont icon-icon_album_add fl" id="js-create-group"></i>
 					</td>
@@ -154,17 +115,28 @@
 
 	<script type="text/dom">
 		var create-table-group = <div class="create-table-group" api-name="Table_group/Create">
-			<input type="text" placeholder="请输入表单组名称">
+			<input type="text" placeholder="请输入表单组名称" api-param-name="name">
 		</div>
 	</script>
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/footer');?>
 	<script type="text/javascript">
+
+					
 		$("#js-create-group").click(function(){
 			popup.sure({
 				title : '创建表单组',
 				content : dom.get('create-table-group')
 			}).then(function(){
-				ApiRequest.push('Table_group/Create')
+				ApiRequest.push('Table_group/Create' , { success : true }).then(function(data){
+					var result = '';
+					result += '<option value="0">请选择所属表单组</option>';
+					$.each(data.result , function(key , value){
+						result += "<option value='" + value.id + "'>" + value.name + "</option>";
+					});
+					$("[api-param-name='from_table_group']").html(result);
+					popup.toast('添加表单组成功');
+					popup.close();
+				});
 			})
 		})
 

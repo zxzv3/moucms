@@ -9,7 +9,7 @@ var popup = new popupWidget();
 var dom = new Dom();
 
 ApiRequest.set(function(data){
-	popup.toast('登录成功，稍后页面将会自动刷新')
+	popup.toast('操作成功，稍后页面将会自动刷新')
 	ApiRequest.success()
 } , function(key , data){
 	if(typeof data.data != 'undefined'){
@@ -22,4 +22,8 @@ ApiRequest.set(function(data){
 
 $(".widget-checkbox").click(function(){
 	$(this).toggleClass('active')
-})
+});
+$('select').each(function(key , value){
+	var selectValue = $(value).attr('value');
+	$(value).find('option[value="' + selectValue + '"]').attr('selected' , true)
+});

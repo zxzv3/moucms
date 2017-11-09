@@ -77,10 +77,10 @@ $query_builder = TRUE;
 
 
 $db['default'] = array(
-	'dsn'	=> 'pgsql:host=localhost;port=3306;dbname=moucms',
+	'dsn'	=> 'pgsql:host=localhost;port=3300;dbname=moucms',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'port' => 3306,
+	'port' => 3300,
 	'password' => '',
 	'database' => 'moucms',
 	'dbdriver' => 'mysqli',

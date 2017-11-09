@@ -23,6 +23,9 @@
   width: 220px;
   margin: 0;
 }
+.warpper .setting td input[type='text'] {
+  height: 22px;
+}
 .warpper .setting td select {
   padding-left: 0;
   margin-left: -3px;
@@ -42,7 +45,7 @@
 .warpper .list {
   float: left;
   width: 100%;
-  margin-top: 30px;
+  /* margin-top:30px; */
 }
 .warpper .list th {
   background-color: #f2f2f2;
@@ -53,18 +56,20 @@
   left: 150px;
   width: 137px;
   top: 50px;
-  padding: 20px 23px 0 25px;
   background-color: #f6f6f6;
   height: 100%;
+  padding: 20px 0px 0 0px;
 }
 .warpper-menu .item {
   float: left;
   width: 100%;
   overflow: hidden;
+  margin-bottom: 18px;
 }
 .warpper-menu .item .top-menu {
   float: left;
   width: 100%;
+  padding: 0px 23px 0 25px;
 }
 .warpper-menu .item .top-menu i {
   color: #666;
@@ -75,16 +80,30 @@
 .warpper-menu .item .song-menu {
   float: left;
   width: 100%;
-  padding-left: 22px;
-  padding-top: 10px;
-  padding-bottom: 20px;
   font-size: 12px;
   color: #666;
+  margin-top: 11px;
+}
+.warpper-menu .item .song-menu a {
+  color: #666;
+  display: block;
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding: 9px 25px 9px 46px;
 }
 .warpper-menu .item .song-menu li {
   float: left;
   width: 100%;
-  margin: 9px 0;
+}
+.warpper-menu .item .song-menu li:hover,
+.warpper-menu .item .song-menu li.active {
+  background-color: #fff;
+  cursor: pointer;
+}
+.warpper-menu .item .song-menu li:hover a,
+.warpper-menu .item .song-menu li.active a {
+  color: #1e9fff;
 }
 .setting {
   max-width: 840px;

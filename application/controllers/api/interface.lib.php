@@ -20,6 +20,7 @@ class interface_lib extends CI_Controller{
 	 * @param  [type] $params [description]
 	 */
 	public function _remap($method , $params){
+		if( ! Moucms::admin_is_login()) exit;
 
 		$this->load->model('Interface_model');
 
@@ -34,7 +35,6 @@ class interface_lib extends CI_Controller{
 			case -2 : Moucms::end(false , '00003 抱歉，该功能管理员尚未开放，暂时无法使用'); break;
 		}
 
-		print_r($interface_params);
 
 		// Here, get the parameters passed by the user and put them into the array
 		foreach ($interface_params as $key => $value) {
