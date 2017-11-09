@@ -68,7 +68,7 @@
 			<button class="btn danger"><i class="fa fa-trash-o"></i>删除超级表单组</button>
 		</div> -->
 
-		<div class="box" api-name="Table/Create">
+		<div class="box" api-name="Table/Create" style="padding-bottom: 30px;">
 			<h1>表单基础设置</h1>
 			<table class="table-list setting">
 				<tr><th width="150"></th><th></th></tr>
@@ -76,9 +76,10 @@
 					<td>所属表单组</td>
 					<td style="padding:10px 20px;">
 						<select api-param-name='from_table_group'>
-							<option value="0">管理用户</option>
-							<option value="1">管理用户</option>
+							<option value="0">请选择所属表单组</option>
+							<!-- <option value="1">管理用户</option> -->
 						</select>
+						<i class="iconfont icon-icon_album_add fl" id="js-create-group"></i>
 					</td>
 				</tr>
 				<tr>
@@ -149,9 +150,24 @@
 		</div>
 	</div>
 	
+	
 
+	<script type="text/dom">
+		var create-table-group = <div class="create-table-group" api-name="Table_group/Create">
+			<input type="text" placeholder="请输入表单组名称">
+		</div>
+	</script>
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/footer');?>
 	<script type="text/javascript">
+		$("#js-create-group").click(function(){
+			popup.sure({
+				title : '创建表单组',
+				content : dom.get('create-table-group')
+			}).then(function(){
+				ApiRequest.push('Table_group/Create')
+			})
+		})
+
 		$("#js-table-create").click(function(){
 
 			var row_base_function = new Array();

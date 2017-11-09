@@ -3,6 +3,9 @@
   min-height: 100%;
   padding-left: 305px;
 }
+.warpper .box {
+  background-color: #fff;
+}
 .warpper .setting {
   float: left;
   width: 450px;
@@ -17,7 +20,7 @@
 .warpper .setting td input[type='text'],
 .warpper .setting td select {
   color: #555;
-  width: 230px;
+  width: 220px;
   margin: 0;
 }
 .warpper .setting td select {
@@ -51,7 +54,7 @@
   width: 137px;
   top: 50px;
   padding: 20px 23px 0 25px;
-  background-color: #f4f4f4;
+  background-color: #f6f6f6;
   height: 100%;
 }
 .warpper-menu .item {

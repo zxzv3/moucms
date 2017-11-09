@@ -6,6 +6,7 @@ var ApiRequest = new ApiRequest({} , {
 	}
 })
 var popup = new popupWidget();
+var dom = new Dom();
 
 ApiRequest.set(function(data){
 	popup.toast('登录成功，稍后页面将会自动刷新')
@@ -16,4 +17,9 @@ ApiRequest.set(function(data){
 	}else{
 		popup.toast(data.message)
 	}
+})
+
+
+$(".widget-checkbox").click(function(){
+	$(this).toggleClass('active')
 })
