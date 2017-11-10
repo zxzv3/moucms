@@ -73,7 +73,7 @@
 							<span>编辑</span>
 						</div>
 						<div class="item">
-							<div class="widget-checkbox" data-name="remove"></div>
+							<div class="widget-checkbox" data-name="trash-o"></div>
 							<span>删除</span>
 						</div>
 					</td>
@@ -107,7 +107,7 @@
 				<tr><th width="150"></th><th></th></tr>
 				<tr>
 					<td>每页显示行数</td>
-					<td><input api-param-name='page_count' value="<?=$Table_data['page_count']?>" max="2" min="0" name="自设行功能" type="text" placeholder="请在此处输入每页显示行数"></td>
+					<td><input api-param-name='page_count' value="<?=$Table_data['page_count']?>" max="2" min="0" name="每页显示行数" type="text" placeholder="请在此处输入每页显示行数"></td>
 				</tr>
 				
 			</table>
@@ -120,25 +120,35 @@
 			<table class="table-list list">
 				<tr>
 					<th width="50"><div class="widget-checkbox"></div></th>
-					<th>字段名称</th>
-					<th>中文名称</th>
-					<th>可否创建</th>
-					<th>可否编辑</th>
+					<th width="">中文名称</th>
+					<th width="">字段名称</th>
+					<th>字段排序</th>
+					<th>数据源</th>
+					<th>类型</th>
+					<th>最大字符</th>
+					<th>最小字符</th>
+					<th>可否为空</th>
+					<th>能否创建</th>
+					<th>能否编辑</th>
 					<th>删除依据</th>
-					<th>是否展示</th>
-					<th>对值数据</th>
-					<th>操作</th>
+					<th>能否展示</th>
+					<th width="130">操作</th>
 				</tr>
 				{Table_field_lists}
-					<tr>
+					<tr data-data='{data}'>
 						<td width="50"><div class="widget-checkbox"></div></td>
-						<td>{field_name}</td>
 						<td>{name}</td>
+						<td>{field_name}</td>
+						<td>{index}</td>
+						<td><span class="label">0条</span></td>
+						<td>{type}</td>
+						<td>{max}</td>
+						<td>{min}</td>
+						<td>{is_null}</td>
 						<td>{create}</td>
 						<td>{edit}</td>
 						<td>{delete}</td>
 						<td>{view}</td>
-						<td>对值数据</td>
 						<td>
 							<i class="fa fa-edit"></i>
 							<i class="fa fa-trash-o"></i>
@@ -163,33 +173,197 @@
 		var create-table-group = <div class="create-table-group" api-name="Table_group/Create">
 			<input type="text" placeholder="请输入表单组名称" api-param-name="name">
 		</div>
-		var create-field = <div class="create-table-group" api-name="Table/CreateField">
-			<input type="text" placeholder="请输入字段名称" name="字段名称" max="26" min="1" api-param-name="key">
-			<input type="text" placeholder="请输入字段中文名称" name="字段中文名" max="16" min="1" api-param-name="name">
-			<select api-param-name="create" min="1" max="1" name="可否创建">
-				<option value="">请选择可否创建</option>
-				<option value="0">可以创建</option>
-				<option value="1">不可创建</option>
-			</select>
-			<select api-param-name="edit" min="1" max="1" name="可否编辑">
-				<option value="">请选择可否编辑</option>
-				<option value="0">可以编辑</option>
-				<option value="1">不可编辑</option>
-			</select>
-			<select api-param-name="delete" min="1" max="1" name="是否为删除依据">
-				<option value="">请选择是否为删除依据</option>
-				<option value="0">删除依据</option>
-				<option value="1">不是删除依据</option>
-			</select>
-			<select api-param-name="view" min="1" max="1" name="可否展示">
-				<option value="">请选择可否展示</option>
-				<option value="0">可以展示</option>
-				<option value="1">不可以展示</option>
-			</select>
+		var create-field = <div class="create-table-group" api-name="Table_field/Create">
+			<div class="item">
+				<span>排序顺序：</span>
+				<input type="text" placeholder="请输入排序(越大排序越靠前)" name="排序" max="26" min="1" api-param-name="index">
+			</div>
+			<div class="item">
+				<span>字段名称：</span>
+				<input type="text" placeholder="请输入字段名称" name="字段名称" max="26" min="1" api-param-name="key">
+			</div>
+			<div class="item">
+				<span>中文名称：</span>
+				<input type="text" placeholder="请输入字段中文名称" name="字段中文名" max="16" min="1" api-param-name="name">
+			</div>
+			<div class="item">
+				<span>字段类型：</span>
+				<select api-param-name="type" min="1" max="22" name="字段类型">
+					<option value="string">string</option>
+					<option value="int">int</option>
+					<option value="phone">phone</option>
+					<option value="idcard">idcard</option>
+					<option value="password">password</option>
+					<option value="username">username</option>
+					<option value="email">email</option>
+					<option value="image">image</option>
+					<option value="video">video</option>
+					<option value="file">file</option>
+					<option value="editor">editor</option>
+					<option value="makedown">makedown</option>
+					<option value="自定义">自定义</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>可否为空：</span>
+				<select api-param-name="is_null" min="1" max="1" name="可否为空">
+					<option value="1">不能为空</option>
+					<option value="0">可以为空</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>最大字符：</span>
+				<input type="text" placeholder="请输入字段最大可输入字符长度" name="最大字符" max="16" min="1" api-param-name="max">
+			</div>
+			<div class="item">
+				<span>最小字符：</span>
+				<input type="text" placeholder="请输入字段最小可输入字符长度" name="最小字符" max="16" min="1" api-param-name="min">
+			</div>
+			<div class="item">
+				<span>可否创建：</span>
+				<select api-param-name="create" min="1" max="1" name="可否创建">
+					<option value="">请选择可否创建</option>
+					<option value="0">可以创建</option>
+					<option value="1">不可创建</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>可否编辑：</span>
+				<select api-param-name="edit" min="1" max="1" name="可否编辑">
+					<option value="">请选择可否编辑</option>
+					<option value="0">可以编辑</option>
+					<option value="1">不可编辑</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>删除依据：</span>
+				<select api-param-name="delete" min="1" max="1" name="是否为删除依据">
+					<option value="">请选择是否为删除依据</option>
+					<option value="0">删除依据</option>
+					<option value="1">不是删除依据</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>可否展示：</span>
+				<select api-param-name="view" min="1" max="1" name="可否展示">
+					<option value="">请选择可否展示</option>
+					<option value="0">可以展示</option>
+					<option value="1">不可以展示</option>
+				</select>
+			</div>
+		</div>
+
+
+		var edit-field = <div class="edit-table-group" api-name="Table_field/Edit">
+			<div class="item">
+				<span>排序顺序：</span>
+				<input type="text" placeholder="请输入排序(越大排序越靠前)" name="排序" max="26" min="1" api-param-name="index" value="{%index%}">
+			</div>
+			<div class="item">
+				<span>字段名称：</span>
+				<input type="text" placeholder="请输入字段名称" name="字段名称" max="26" min="1" api-param-name="key" value="{%field_name%}">
+			</div>
+			<div class="item">
+				<span>中文名称：</span>
+				<input type="text" placeholder="请输入字段中文名称" name="字段中文名" max="16" min="1" api-param-name="name" value="{%name%}">
+			</div>
+			<div class="item">
+				<span>字段类型：</span>
+				<select api-param-name="type" value="{%type%}" min="1" max="22" name="字段类型">
+					<option value="string">string</option>
+					<option value="int">int</option>
+					<option value="phone">phone</option>
+					<option value="idcard">idcard</option>
+					<option value="password">password</option>
+					<option value="username">username</option>
+					<option value="email">email</option>
+					<option value="image">image</option>
+					<option value="video">video</option>
+					<option value="file">file</option>
+					<option value="editor">editor</option>
+					<option value="makedown">makedown</option>
+					<option value="自定义">自定义</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>可否为空：</span>
+				<select api-param-name="is_null" value="{%is_null%}" min="1" max="1" name="可否为空">
+					<option value="1">不能为空</option>
+					<option value="0">可以为空</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>最大字符：</span>
+				<input type="text" placeholder="请输入字段最大可输入字符长度" name="最大字符" max="16" min="1" api-param-name="max" value="{%max%}">
+			</div>
+			<div class="item">
+				<span>最小字符：</span>
+				<input type="text" placeholder="请输入字段最小可输入字符长度" name="最小字符" max="16" min="1" api-param-name="min" value="{%min%}">
+			</div>
+			<div class="item">
+				<span>可否创建：</span>
+				<select api-param-name="create" value="{%create%}" min="1" max="1" name="可否创建">
+					<option value="">请选择可否创建</option>
+					<option value="0">可以创建</option>
+					<option value="1">不可创建</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>可否编辑：</span>
+				<select api-param-name="edit" value="{%edit%}" min="1" max="1" name="可否编辑">
+					<option value="">请选择可否编辑</option>
+					<option value="0">可以编辑</option>
+					<option value="1">不可编辑</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>删除依据：</span>
+				<select api-param-name="delete" value="{%delete%}" min="1" max="1" name="是否为删除依据">
+					<option value="">请选择是否为删除依据</option>
+					<option value="0">删除依据</option>
+					<option value="1">不是删除依据</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>可否展示：</span>
+				<select api-param-name="view" value="{%view%}" min="1" max="1" name="可否展示">
+					<option value="">请选择可否展示</option>
+					<option value="0">可以展示</option>
+					<option value="1">不可以展示</option>
+				</select>
+			</div>
 		</div>
 	</script>
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/footer');?>
 	<script type="text/javascript">
+
+		$(".list .fa-edit").click(function(){
+			var data = $.parseJSON($(this).parent().parent().attr('data-data'));
+			popup.sure({
+				title : '编辑字段',
+				content : dom.get('edit-field' , data)
+			}).then(function(){
+				ApiRequest.push('Table_field/Edit' , {params : { 
+					id : data.id ,
+					from_table : <?=$Table_data['id']?>,
+				}})
+			})
+		});
+
+
+		$(".list .fa-trash-o").click(function(){
+			var data = $.parseJSON($(this).parent().parent().attr('data-data'));
+			console.log(data)
+			popup.sure({
+				title : '您确定要删除该字段吗',
+				content : '您确定要删除该字段吗?'
+			}).then(function(){
+				ApiRequest.push('Table_field/Remove' , { params : { id : data.id } })
+			})
+		});
+
+
+
 
 					
 		$("#js-create-group").click(function(){
@@ -225,7 +399,7 @@
 				title : '添加表单字段',
 				content : dom.get('create-field')
 			}).then(function(){
-				ApiRequest.push('Table/CreateField' , {
+				ApiRequest.push('Table_field/Create' , {
 					params : {
 						from_table : <?=$Table_data['id']?>,
 					}
@@ -249,6 +423,10 @@
 			})
 		})
 
+
+		$("#js-table-view").click(function(){
+			window.location.href = "{adminDir}/form/<?=$Table_data['uid']?>";
+		})
 
 
 		// 编辑超级表单

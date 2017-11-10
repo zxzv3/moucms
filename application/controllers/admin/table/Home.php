@@ -3,6 +3,7 @@ class Home extends CI_Controller{
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->model('Table_field_model');
 		$this->load->model('Table_group_model');
 		$this->load->model('Table_model');
 	}
@@ -18,7 +19,8 @@ class Home extends CI_Controller{
 	 * @return [type] [description]
 	 */
 	public function edit(){
-		$Table_data = $this->Table_model->get(array( 'id' => $this->input->get('id' , true) ));
+		$from_table = $this->input->get('id' , true);
+		$Table_data = $this->Table_model->get(array( 'id' => $from_table ));
 		if( ! isset($Table_data)) show_404();
 
 
@@ -34,10 +36,32 @@ class Home extends CI_Controller{
 			) , 1 , 1 , array() , 'all');
 		}
 
+		$this->Table_field_model->order_by('index' , 'desc');
+		$Table_field_lists = $this->Table_field_model->get_list(array( 'from_table' => $from_table ));
+		foreach ($Table_field_lists as &$value) {
+			$value['data'] = json_encode($value);
 
+
+			$value['max'] = $value['max'] . '个';
+			$value['min'] = $value['min'] . '个';
+			$value['type'] = "<span class='label'>{$value['type']}</span>";
+			$value['is_null'] = array( "<span class='label success'>Yes</span>" , "<span class='label danger'>No</span>" )[$value['is_null']];
+			if($value['delete'] != 0 && $value['edit'] != 0 && $value['create'] != 0){
+				$value['is_null'] = '';
+				$value['max'] = '';
+				$value['min'] = '';
+				$value['type'] = '';
+			}
+
+			$value['create'] = array( "<span class='label success'>Yes</span>" , "<span class='label danger'>No</span>" )[$value['create']];
+			$value['edit'] = array( "<span class='label success'>Yes</span>" , "<span class='label danger'>No</span>" )[$value['edit']];
+			$value['delete'] = array( "<span class='label success'>Yes</span>" , "<span class='label danger'>No</span>" )[$value['delete']];
+			$value['view'] = array( "<span class='label success'>Yes</span>" , "<span class='label danger'>No</span>" )[$value['view']];
+		}
 
 
 		Loader::view('table/edit' , array(
+			'Table_field_lists' => $Table_field_lists,
 			'Table_data' => $Table_data,
 			'Table_group_lists' => $Table_group_lists,
 		) , ADMIN_TEMPLATE);

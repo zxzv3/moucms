@@ -20,7 +20,7 @@ class interface_lib extends CI_Controller{
 	 * @param  [type] $params [description]
 	 */
 	public function _remap($method , $params){
-		if( ! Moucms::admin_is_login()) exit;
+		if( $method != 'login') if( ! Moucms::admin_is_login()) exit;
 
 		$this->load->model('Interface_model');
 

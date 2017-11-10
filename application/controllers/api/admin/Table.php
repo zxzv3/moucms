@@ -5,26 +5,10 @@ class Table extends interface_lib{
 		parent::__construct();
 		$this->load->model('Table_model');
 		$this->load->model('Table_group_model');
-		$this->load->model('Table_fieid_model');
+		$this->load->model('Table_field_model');
 	}
 
 
-
-	public function createfield($params){
-		if($this->Table_fieid_model->is_exist(array(
-			'from_table' => $params->from_table ,
-			'field_name' => $params->key ,
-			'name' => $params->name ,
-		))) Moucms::end(false , '您输入的字段已经存在了');
-
-		$this->Table_fieid_model->create(array(
-			'from_table' => $params->from_table ,
-			'field_name' => $params->key ,
-			'name' => $params->name ,
-		));
-
-		Moucms::end(true);
-	}
 
 
 
@@ -58,6 +42,7 @@ class Table extends interface_lib{
 			'row_base_function' => json_encode($this->input->post('row_base_function' , true)),
 			'table_base_function' => json_encode($this->input->post('table_base_function' , true)),
 			'from_table_group' => $params->from_table_group,
+			'page_count' => $params->page_count,
 			'name' => $params->name,
 			'modles' => json_encode(explode(',', $params->moudles)),
 			'main_modle' => $params->main_moudle,

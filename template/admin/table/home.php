@@ -73,7 +73,7 @@
 							<span>编辑</span>
 						</div>
 						<div class="item">
-							<div class="widget-checkbox active" data-name="remove"></div>
+							<div class="widget-checkbox active" data-name="trash-o"></div>
 							<span>删除</span>
 						</div>
 					</td>
@@ -100,7 +100,14 @@
 					<td><input api-param-name='uid' max="32" min="4" name="表单标识" type="text" placeholder="请在此处输入表单标识（字母）"></td>
 				</tr>
 			</table>
-
+			<table class="table-list setting">
+				<tr><th width="150"></th><th></th></tr>
+				<tr>
+					<td>每页显示行数</td>
+					<td><input api-param-name='page_count' value="10" max="2" min="0" name="每页显示行数" type="text" placeholder="请在此处输入每页显示行数"></td>
+				</tr>
+				
+			</table>
 			
 		</div>
 
