@@ -60,7 +60,13 @@ class Home extends CI_Controller{
 		}
 
 
+		// 获取工具栏信息
+		$this->load->model('Table_tool_model');
+		$this->Table_tool_model->order_by('index' , 'desc');
+		$Tool_lists = $this->Table_tool_model->get_list(array( 'from_table' => $Table_data['id'] ) , 1 , 1 , array() , 'all');
+
 		Loader::view('table/edit' , array(
+			'Tool_lists' => $Tool_lists,
 			'Table_field_lists' => $Table_field_lists,
 			'Table_data' => $Table_data,
 			'Table_group_lists' => $Table_group_lists,

@@ -34,4 +34,5 @@
 <script src="./assets/lib/ApiRequest/ApiRequest.js"></script>
 <script src="./assets/lib/dom/dom.js"></script>
 <script src="./assets/lib/popup/popup.js"></script>
+<script src="./assets/lib/layer/layer.js"></script>
 <script src="./assets/js/admin/app.js"></script>

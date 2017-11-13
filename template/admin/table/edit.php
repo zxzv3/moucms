@@ -1,4 +1,5 @@
 	<link rel="stylesheet" href="./assets/css/admin/page/table/table.css">
+	<link rel="stylesheet" href="./assets/css/admin/page/table/table-popup.css">
 </head>
 <body>
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/top-header');?>
@@ -78,33 +79,12 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td>表单基础功能</td>
-					<td id="js-table-base-function">
-						<div class="item">
-							<div class="widget-checkbox" data-name="search"></div>
-							<span>搜索</span>
-						</div>
-						<div class="item">
-							<div class="widget-checkbox" data-name="removeAll"></div>
-							<span>批删</span>
-						</div>
-						<div class="item">
-							<div class="widget-checkbox" data-name="create"></div>
-							<span>创建</span>
-						</div>
-					</td>
-				</tr>
+				
 				<tr>
 					<td>表单标识名</td>
 					<td><input api-param-name='uid' value="<?=$Table_data['uid']?>" max="32" min="4" name="表单标识" type="text" placeholder="请在此处输入表单标识（字母）"></td>
 				</tr>
-			</table>
-
-
-
-			<table class="table-list setting">
-				<tr><th width="150"></th><th></th></tr>
+				
 				<tr>
 					<td>每页显示行数</td>
 					<td><input api-param-name='page_count' value="<?=$Table_data['page_count']?>" max="2" min="0" name="每页显示行数" type="text" placeholder="请在此处输入每页显示行数"></td>
@@ -156,6 +136,29 @@
 					</tr>
 				{/Table_field_lists}
 			</table>
+		</div>
+
+		<div class="box">
+			<h1>顶部工具栏</h1>
+			<div class="tools" id="js-tools" style="border:2px dashed #eee;margin-bottom:30px;padding:19px;">
+				<?php
+					foreach ($Tool_lists as $key => $value){
+						
+
+						$data = json_encode($value);
+						if($value['type'] == 'button'){
+							$icon = $value['icon'] != '' ? "<i class='fa fa-{$value['icon']}'></i>" : '';
+							echo "<button data-data='" . $data . "' class='btn {$value['color']}' data-uid='{$value['uid']}'>{$icon}{$value['tool_name']}</button>";
+						}
+						if($value['type'] == 'select' || $value['type'] == 'search-select-value'){
+							echo "<select data-data='" . $data . "' name='' id=''></select>";
+						}
+
+					}
+				?>
+				
+			</div>
+			<button class="btn" id="js-create-tools"><i class="fa fa-plus"></i>添加工具</button>
 		</div>
 
 		<div class="box" style="padding:5px; background: transparent;">
@@ -333,9 +336,202 @@
 				</select>
 			</div>
 		</div>
+
+
+		var create-tools = <div class="create-tools" api-name="Table_tool/Create">
+			<div class="item">
+				<span>工具名称：</span>
+				<input type="text" api-param-name="name" placeholder="请输入工具名称" max="16" min="1" name="工具名称">
+			</div>
+			<div class="item">
+				<span>工具图标：</span>
+				<input type="text" api-param-name="icon" placeholder="请输入工具图标" max="46" min="0" name="工具图标">
+			</div>
+
+			<div class="item">
+				<span>工具颜色：</span>
+				<select api-param-name="color">
+					<option value="">default</option>
+					<option value="danger">danger</option>
+					<option value="fezocms">fezocms</option>
+					<option value="success">success</option>
+					<option value="warning">warning</option>
+					<option value="blue-o">blue-o</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>工具代号：</span>
+				<input type="text" api-param-name="uid" placeholder="请输入工具代号" max="16" min="1" name="工具代号">
+			</div>
+			<div class="item">
+				<span>工具排序：</span>
+				<input type="text" api-param-name="index" placeholder="请输入工具排序" max="16" min="1" name="工具排序">
+			</div>
+			<div class="item">
+				<span>工具类型：</span>
+				<select api-param-name="type" name="工具类型">
+					<option value="button">button</option>
+					<option value="text">text</option>
+					<option value="select">select</option>
+					<option value="search-text-value">search-text-value</option>
+					<option value="search-select-value">search-select-value</option>
+					<option value="search-submit">search-submit</option>
+				</select>
+			</div>
+			<!-- <div class="item">
+				<span>数据源头：</span>
+				<button class="btn" id="js-source-tools" style="position: relative;top: 7px;font-size: 12px;">...</button>
+			</div> -->
+		</div>
+
+		var edit-tools = <div class="edit-tools" api-name="Table_tool/Edit">
+			<div class="item">
+				<span>工具名称：</span>
+				<input type="text" api-param-name="name" value="{%tool_name%}" placeholder="请输入工具名称" max="16" min="1" name="工具名称">
+			</div>
+			<div class="item">
+				<span>工具图标：</span>
+				<input type="text" api-param-name="icon" value="{%icon%}" placeholder="请输入工具图标" max="46" min="0" name="工具图标">
+			</div>
+
+			<div class="item">
+				<span>工具颜色：</span>
+				<select api-param-name="color" value="{%color%}">
+					<option value="">default</option>
+					<option value="danger">danger</option>
+					<option value="fezocms">fezocms</option>
+					<option value="success">success</option>
+					<option value="warning">warning</option>
+					<option value="blue-o">blue-o</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>工具代号：</span>
+				<input type="text" api-param-name="uid" value="{%uid%}" placeholder="请输入工具代号" max="16" min="1" name="工具代号">
+			</div>
+			<div class="item">
+				<span>工具排序：</span>
+				<input type="text" api-param-name="index" value="{%index%}" placeholder="请输入工具排序" max="16" min="1" name="工具排序">
+			</div>
+			<div class="item">
+				<span>工具类型：</span>
+				<select api-param-name="type" value="{%type%}" name="工具类型">
+					<option value="button">button</option>
+					<option value="text">text</option>
+					<option value="select">select</option>
+					<option value="search-text-value">search-text-value</option>
+					<option value="search-select-value">search-select-value</option>
+					<option value="search-submit">search-submit</option>
+				</select>
+			</div>
+			<div class="item">
+				<span>数据源头：</span>
+				<button class="btn" id="js-source-tools" style="position: relative;top: 7px;font-size: 12px;">...</button>
+			</div>
+		</div>
+
+		var source-tools = <div class="source-tools">
+			<div class="tools" style="margin-bottom: 10px;">
+				<button class="btn" id="js-source-tools-item"><i class="fa fa-plus"></i>添加单数据</button>
+				<button class="btn" id="js-source-tools-database"><i class="fa fa-plus"></i>设置数据表</button>
+			</div>
+			<table class="table-list list">
+				<tr>
+					<th>数据key</th>
+					<th>数据展示内容</th>
+					<th>数据来源</th>
+					<th>操作</th>
+				</tr>
+			</table>
+		</div>
+
+		var source-tools-database = <div class="source-tools-database">
+			<div class="scrool">
+
+			</div>
+			<div class="data">
+				<div class="item input">
+					<span>数据内容字段：</span>
+					<input type="text" id="js-value" placeholder="请输入数据内容字段">
+				</div>
+				<div class="item input">
+					<span>数据KEY字段：</span>
+					<input type="text" id="js-key" placeholder="请输入数据KEY字段">
+				</div>
+			</div>
+			<div class="data">
+				<div class="button">
+					<button class="btn" id="js-save"><i class="fa fa-save"></i>保存数据表</button>
+				</div>
+			</div>
+
+
+		</div>
 	</script>
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/footer');?>
 	<script type="text/javascript">
+
+
+
+		$("#js-tools input , #js-tools select , #js-tools button").click(function(){
+			var data = $.parseJSON($(this).attr('data-data'));
+			popup.sure({
+				title : '编辑工具' ,
+				content : dom.get('edit-tools' , data)
+			}).then(function(){
+				ApiRequest.push('Table_tool/Edit' , { params : {
+					id : data.id,
+					from_table : <?=$Table_data['id']?>
+				} })
+			});
+			$("#js-source-tools").click(function(){
+				//页面层
+				layer.open({
+					type: 1,
+					title : '数据源',
+					area: ['850px', '700px'], //宽高
+					content: dom.get('source-tools'),
+					success : function(){
+						$("#js-source-tools-database").click(function(){
+							layer.open({
+								type: 1,
+								title : '设置数据表',
+								area: ['550px', '470px'], //宽高
+								content: dom.get('source-tools-database'),
+								success : function(){
+									
+									
+									ApiRequest.push('Databases/Get' , { success : true }).then(function(data){
+										$.each(data.result , function( key , value ){
+											$(".source-tools-database .scrool").append("<div class='item'>" + value + "</div>");
+										})
+										$(".source-tools-database .scrool .item").click(function(){
+											$(".source-tools-database .scrool .item").removeClass('active');
+											$(this).addClass('active');
+										});
+										$(".source-tools-database .scrool .item:eq(0)").addClass('active')
+									});
+
+									$(".source-tools-database #js-save").click(function(){
+										ApiRequest.push('')
+									})
+								}
+							})
+						});
+					}
+				});
+			})
+			return false;
+		});
+			// })
+		$("#js-create-tools").click(function(){
+			popup.sure({
+				title : '添加工具' ,
+				content : dom.get('create-tools')
+			}).then(function(){
+				ApiRequest.push('Table_tool/Create' , { params : { from_table : <?=$Table_data['id']?> } })
+			});
+		});
 
 		$(".list .fa-edit").click(function(){
 			var data = $.parseJSON($(this).parent().parent().attr('data-data'));

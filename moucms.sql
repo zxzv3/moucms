@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : localhost_3306
 Source Server Version : 50505
-Source Host           : localhost:3300
+Source Host           : localhost:3306
 Source Database       : moucms
 
 Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-10 18:43:13
+Date: 2017-11-13 10:45:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,7 +38,7 @@ CREATE TABLE `moucms_admin_user` (
 -- ----------------------------
 -- Records of moucms_admin_user
 -- ----------------------------
-INSERT INTO `moucms_admin_user` VALUES ('1', '23', 'admin', 'e49504be6c931321a08211580d3ac76d', '847382', '2017-10-25 14:34:04', '2017-11-10 05:08:21', '2017-11-10 01:53:20', '127.0.0.1', '127.0.0.1', '26', '0');
+INSERT INTO `moucms_admin_user` VALUES ('1', '23', 'admin', 'e49504be6c931321a08211580d3ac76d', '847382', '2017-10-25 14:34:04', '2017-11-12 09:01:29', '2017-11-12 03:41:04', '127.0.0.1', '127.0.0.1', '29', '0');
 
 -- ----------------------------
 -- Table structure for moucms_error_log
@@ -57,7 +57,7 @@ CREATE TABLE `moucms_error_log` (
   `backtrace` text,
   `uri` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=347 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=362 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of moucms_error_log
@@ -332,6 +332,21 @@ INSERT INTO `moucms_error_log` VALUES ('343', '[]', '[]', '8', 'Undefined index:
 INSERT INTO `moucms_error_log` VALUES ('344', '[]', '[]', '8', 'Undefined index: width', 'F:\\xampp\\htdocs\\moucms\\template\\admin\\form\\home.php', '46', '2017-11-10 11:34:09', '0', '[]', 'admin/form/admin_user');
 INSERT INTO `moucms_error_log` VALUES ('345', '[]', '[]', '8', 'Undefined index: width', 'F:\\xampp\\htdocs\\moucms\\template\\admin\\form\\home.php', '46', '2017-11-10 11:34:09', '0', '[]', 'admin/form/admin_user');
 INSERT INTO `moucms_error_log` VALUES ('346', '[]', '[]', '4', 'syntax error, unexpected \'echo\' (T_ECHO)', 'F:\\xampp\\htdocs\\moucms\\template\\admin\\form\\home.php', '46', '2017-11-10 11:34:13', '0', '[]', 'admin/form/admin_user');
+INSERT INTO `moucms_error_log` VALUES ('347', '[]', '[]', '0', 'Unable to locate the model you have specified: Admin_user_group_model', 'F:\\xampp\\htdocs\\moucms\\application\\system\\core\\Loader.php', '344', '2017-11-11 11:45:36', '0', '[{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\controllers\\\\admin\\\\Form.php\",\"line\":24,\"function\":\"model\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\CodeIgniter.php\",\"line\":532,\"function\":\"call_user_func_array\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\index.php\",\"line\":321,\"function\":\"require_once\"}]', 'admin/form/admin_user_group');
+INSERT INTO `moucms_error_log` VALUES ('348', '[]', '{\"id\":\"9\"}', '0', 'Unable to locate the model you have specified: Setting_model', 'F:\\xampp\\htdocs\\moucms\\application\\system\\core\\Loader.php', '344', '2017-11-11 14:52:37', '0', '[{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\Loader.php\",\"line\":244,\"function\":\"model\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\Loader.php\",\"line\":1361,\"function\":\"model\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\Loader.php\",\"line\":157,\"function\":\"_ci_autoloader\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\Controller.php\",\"line\":80,\"function\":\"initialize\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\controllers\\\\admin\\\\table\\\\Home.php\",\"line\":5,\"function\":\"__construct\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\CodeIgniter.php\",\"line\":518,\"function\":\"__construct\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\index.php\",\"line\":321,\"function\":\"require_once\"}]', 'admin/table/home/edit');
+INSERT INTO `moucms_error_log` VALUES ('349', '[]', '{\"id\":\"9\"}', '0', 'Unable to locate the model you have specified: Setting_model', 'F:\\xampp\\htdocs\\moucms\\application\\system\\core\\Loader.php', '344', '2017-11-11 14:52:39', '0', '[{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\Loader.php\",\"line\":244,\"function\":\"model\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\Loader.php\",\"line\":1361,\"function\":\"model\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\Loader.php\",\"line\":157,\"function\":\"_ci_autoloader\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\Controller.php\",\"line\":80,\"function\":\"initialize\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\controllers\\\\admin\\\\table\\\\Home.php\",\"line\":5,\"function\":\"__construct\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\CodeIgniter.php\",\"line\":518,\"function\":\"__construct\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\index.php\",\"line\":321,\"function\":\"require_once\"}]', 'admin/table/home/edit');
+INSERT INTO `moucms_error_log` VALUES ('350', '[]', '{\"id\":\"9\"}', '1', 'Call to undefined method Setting_model::all()', 'F:\\xampp\\htdocs\\moucms\\application\\libraries\\Loader.php', '28', '2017-11-11 14:53:06', '0', '[]', 'admin/table/home/edit');
+INSERT INTO `moucms_error_log` VALUES ('351', '[]', '[]', '0', 'Unable to locate the model you have specified: Admin_user_group_model', 'F:\\xampp\\htdocs\\moucms\\application\\system\\core\\Loader.php', '344', '2017-11-12 03:43:49', '0', '[{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\controllers\\\\admin\\\\Form.php\",\"line\":24,\"function\":\"model\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\application\\\\system\\\\core\\\\CodeIgniter.php\",\"line\":532,\"function\":\"call_user_func_array\"},{\"file\":\"F:\\\\xampp\\\\htdocs\\\\moucms\\\\index.php\",\"line\":321,\"function\":\"require_once\"}]', 'admin/form/admin_user_group');
+INSERT INTO `moucms_error_log` VALUES ('352', '[]', '[]', '2', 'scandir(./caxa/,./caxa/): ϵͳ�Ҳ���ָ�����ļ��� (code: 2)', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Databases.php', '15', '2017-11-12 03:52:43', '9', '[]', 'api/admin/databases/get');
+INSERT INTO `moucms_error_log` VALUES ('353', '[]', '[]', '2', 'scandir(./caxa/): failed to open dir: No such file or directory', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Databases.php', '15', '2017-11-12 03:52:43', '9', '[]', 'api/admin/databases/get');
+INSERT INTO `moucms_error_log` VALUES ('354', '[]', '[]', '2', 'scandir(): (errno 2): No such file or directory', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Databases.php', '15', '2017-11-12 03:52:43', '9', '[]', 'api/admin/databases/get');
+INSERT INTO `moucms_error_log` VALUES ('355', '[]', '[]', '1', 'Class \'interface_lib\' not found', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '2', '2017-11-12 04:24:18', '0', '[]', 'api/admin/table_tool/create');
+INSERT INTO `moucms_error_log` VALUES ('356', '{\"name\":\"12321312\",\"color\":\"\",\"uid\":\"312321\",\"index\":\"123123\",\"type\":\"button\",\"from_table\":\"9\"}', '[]', '8', 'Undefined property: stdClass::$tool_name', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '14', '2017-11-12 04:34:57', '10', '[]', 'api/admin/table_tool/create');
+INSERT INTO `moucms_error_log` VALUES ('357', '{\"name\":\"12321\",\"color\":\"\",\"uid\":\"32132\",\"index\":\"13213\",\"type\":\"button\",\"from_table\":\"9\"}', '[]', '8', 'Undefined property: Table_tool::$Table_model', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '12', '2017-11-12 04:37:02', '10', '[]', 'api/admin/table_tool/create');
+INSERT INTO `moucms_error_log` VALUES ('358', '{\"name\":\"12321\",\"color\":\"\",\"uid\":\"32132\",\"index\":\"13213\",\"type\":\"button\",\"from_table\":\"9\"}', '[]', '1', 'Call to a member function is_exist() on null', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '12', '2017-11-12 04:37:02', '10', '[]', 'api/admin/table_tool/create');
+INSERT INTO `moucms_error_log` VALUES ('359', '{\"name\":\"12321\",\"color\":\"\",\"uid\":\"32132\",\"index\":\"13213\",\"type\":\"button\",\"from_table\":\"9\"}', '[]', '8', 'Undefined property: Table_tool::$Table_model', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '12', '2017-11-12 04:37:06', '10', '[]', 'api/admin/table_tool/create');
+INSERT INTO `moucms_error_log` VALUES ('360', '{\"name\":\"12321\",\"color\":\"\",\"uid\":\"32132\",\"index\":\"13213\",\"type\":\"button\",\"from_table\":\"9\"}', '[]', '1', 'Call to a member function is_exist() on null', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '12', '2017-11-12 04:37:06', '10', '[]', 'api/admin/table_tool/create');
+INSERT INTO `moucms_error_log` VALUES ('361', '{\"name\":\"\\u5220\\u9664\\u9009\\u4e2d\\u7528\\u6237\",\"icon\":\"trash-o\",\"color\":\"danger\",\"uid\":\"remove-all\",\"index\":\"999\",\"type\":\"button\",\"id\":\"8\",\"from_table\":\"9\"}', '[]', '1', 'Cannot use object of type stdClass as array', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '12', '2017-11-12 09:31:25', '11', '[]', 'api/admin/table_tool/edit');
 
 -- ----------------------------
 -- Table structure for moucms_interface
@@ -350,7 +365,7 @@ CREATE TABLE `moucms_interface` (
   `count` int(11) DEFAULT '0',
   `params` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of moucms_interface
@@ -363,6 +378,9 @@ INSERT INTO `moucms_interface` VALUES ('5', 'Table.php', 'remove', 'api/admin', 
 INSERT INTO `moucms_interface` VALUES ('6', 'Table_field.php', 'create', 'api/admin', 'api/admin/table_field/create', null, '0', null, null, '0', '{\"from_table\" : {\"max\" : 16 , \"min\" : 1} , \"key\" : {\"max\" : 26 , \"min\" : 1},\"name\" : {\"max\" : 16 , \"min\" : 1},\"create\" : {\"max\" : 1 , \"min\" : 1},\"max\":{\"max\":11,\"min\":1},\"min\":{\"max\":11,\"min\":1},\"type\":{\"max\":22,\"min\":1},\"is_null\":{\"max\":1,\"min\":1},\"edit\" : {\"max\" : 1 , \"min\" : 1},\"delete\" : {\"max\" : 1 , \"min\" : 1},\"index\":{\"max\":12,\"min\":1},\"view\" : {\"max\" : 1 , \"min\" : 1}}');
 INSERT INTO `moucms_interface` VALUES ('7', 'Table_field.php', 'remove', 'api/admin', 'api/admin/table_field/remove', null, '0', null, null, '0', '{\"id\" : {\"max\":11,\"min\":1}}');
 INSERT INTO `moucms_interface` VALUES ('8', 'Table_field.php', 'edit', 'api/admin', 'api/admin/table_field/edit', null, '0', null, null, '0', '{\"id\":{\"max\":11,\"min\":1},\"from_table\":{\"max\":16,\"min\":1},\"key\":{\"max\":26,\"min\":1},\"max\":{\"max\":11,\"min\":1},\"min\":{\"max\":11,\"min\":1},\"type\":{\"max\":22,\"min\":1},\"is_null\":{\"max\":1,\"min\":1},\"name\":{\"max\":16,\"min\":1},\"create\":{\"max\":1,\"min\":1},\"edit\":{\"max\":1,\"min\":1},\"delete\":{\"max\":1,\"min\":1},\"index\":{\"max\":12,\"min\":1},\"view\":{\"max\":1,\"min\":1}}');
+INSERT INTO `moucms_interface` VALUES ('9', 'Databases.php', 'get', 'api/admin', 'api/admin/databases/get', null, '0', null, null, '0', null);
+INSERT INTO `moucms_interface` VALUES ('10', 'Table_tool.php', 'create', 'api/admin', 'api/admin/table_tool/create', null, '0', null, null, '0', '{\"name\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"color\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"uid\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"index\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"icon\" : { \"max\" : 46 , \"min\" : 0} ,\r\n\"type\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"from_table\" : { \"max\" : 16 , \"min\" : 1}}');
+INSERT INTO `moucms_interface` VALUES ('11', 'Table_tool.php', 'edit', 'api/admin', 'api/admin/table_tool/edit', null, '0', null, null, '0', '{\"name\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"color\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"uid\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"index\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"icon\" : { \"max\" : 46 , \"min\" : 0} ,\r\n\"type\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"from_table\" : { \"max\" : 16 , \"min\" : 1} , \"id\" : {\"max\":16 , \"min\":1}}');
 
 -- ----------------------------
 -- Table structure for moucms_interface_group
@@ -424,6 +442,24 @@ INSERT INTO `moucms_table` VALUES ('9', '15', '用户列表', 'admin_user', '[\"
 INSERT INTO `moucms_table` VALUES ('10', '15', '管理权限', 'admin_user_group', '[\"\"]', 'admin_user_group', '[\"edit\",\"remove\"]', '[\"search\",\"removeAll\",\"create\"]', '[\"\"]', '10');
 
 -- ----------------------------
+-- Table structure for moucms_table_database
+-- ----------------------------
+DROP TABLE IF EXISTS `moucms_table_database`;
+CREATE TABLE `moucms_table_database` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) DEFAULT NULL,
+  `key_name` varchar(25) DEFAULT NULL,
+  `from_database_name` varchar(25) DEFAULT NULL,
+  `is_tools` int(1) DEFAULT NULL COMMENT '0 tools 1 table',
+  `type` int(1) DEFAULT NULL COMMENT '0 手动  1 数据库',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of moucms_table_database
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for moucms_table_field
 -- ----------------------------
 DROP TABLE IF EXISTS `moucms_table_field`;
@@ -447,7 +483,7 @@ CREATE TABLE `moucms_table_field` (
 -- ----------------------------
 -- Records of moucms_table_field
 -- ----------------------------
-INSERT INTO `moucms_table_field` VALUES ('9', 'username', '用户名', '9', '10', '16', '1', '1', 'string', '0', '0', '1', '0');
+INSERT INTO `moucms_table_field` VALUES ('9', 'username', '用户名', '9', '10', '16', '5', '1', 'string', '0', '0', '1', '0');
 INSERT INTO `moucms_table_field` VALUES ('10', 'lost_time', '最后登录时间', '9', '2', '16', '1', '1', 'string', '1', '1', '1', '0');
 INSERT INTO `moucms_table_field` VALUES ('11', 'lost_ip', '最后登录IP', '9', '2', '16', '1', '1', 'string', '1', '1', '1', '0');
 INSERT INTO `moucms_table_field` VALUES ('12', 'login_time', '上次登录时间', '9', '2', '16', '1', '1', 'string', '1', '1', '1', '0');
@@ -476,3 +512,31 @@ CREATE TABLE `moucms_table_group` (
 -- ----------------------------
 INSERT INTO `moucms_table_group` VALUES ('15', '管理用户');
 INSERT INTO `moucms_table_group` VALUES ('16', '用户管理');
+
+-- ----------------------------
+-- Table structure for moucms_table_tool
+-- ----------------------------
+DROP TABLE IF EXISTS `moucms_table_tool`;
+CREATE TABLE `moucms_table_tool` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_table` int(11) DEFAULT NULL,
+  `tool_name` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
+  `icon` varchar(32) DEFAULT NULL,
+  `color` varchar(25) DEFAULT NULL,
+  `uid` varchar(25) DEFAULT NULL,
+  `index` int(11) DEFAULT NULL,
+  `type` varchar(25) DEFAULT NULL,
+  `from_database` varchar(52) DEFAULT NULL,
+  `field_key` varchar(52) DEFAULT NULL,
+  `field_value` varchar(52) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of moucms_table_tool
+-- ----------------------------
+INSERT INTO `moucms_table_tool` VALUES ('8', '9', '删除选中用户', 'trash-o', 'danger', 'remove-all', '999', 'button', null, null, null);
+INSERT INTO `moucms_table_tool` VALUES ('9', '9', '添加用户', 'user-plus', 'fezocms', 'create', '998', 'button', null, null, null);
+INSERT INTO `moucms_table_tool` VALUES ('10', '9', '管理组', '', '', 'from_admin_group', '97', 'search-select-value', null, null, null);
+INSERT INTO `moucms_table_tool` VALUES ('11', '9', '测试', '', '', 'test', '50', 'search-select-value', null, null, null);
+INSERT INTO `moucms_table_tool` VALUES ('12', '9', 'das', 'asd', '', 'asd', '0', 'search-text-value', null, null, null);
