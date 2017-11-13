@@ -445,18 +445,16 @@
 			</table>
 		</div>
 
-		var source-tools-database = <div class="source-tools-database">
-			<div class="scrool">
-
-			</div>
+		var source-tools-database = <div class="source-tools-database" api-name="Table_tool/Create_source_database">
+			<div class="scrool"></div>
 			<div class="data">
 				<div class="item input">
 					<span>数据内容字段：</span>
-					<input type="text" id="js-value" placeholder="请输入数据内容字段">
+					<input type="text" id="js-value" api-param-name="value" placeholder="请输入数据内容字段">
 				</div>
 				<div class="item input">
 					<span>数据KEY字段：</span>
-					<input type="text" id="js-key" placeholder="请输入数据KEY字段">
+					<input type="text" id="js-key" api-param-name="key" placeholder="请输入数据KEY字段">
 				</div>
 			</div>
 			<div class="data">
@@ -464,9 +462,9 @@
 					<button class="btn" id="js-save"><i class="fa fa-save"></i>保存数据表</button>
 				</div>
 			</div>
-
-
 		</div>
+
+
 	</script>
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/footer');?>
 	<script type="text/javascript">
@@ -492,8 +490,10 @@
 					area: ['850px', '700px'], //宽高
 					content: dom.get('source-tools'),
 					success : function(){
+
+
 						$("#js-source-tools-database").click(function(){
-							layer.open({
+							var layerData = layer.open({
 								type: 1,
 								title : '设置数据表',
 								area: ['550px', '470px'], //宽高
@@ -513,8 +513,17 @@
 									});
 
 									$(".source-tools-database #js-save").click(function(){
-										ApiRequest.push('')
+										ApiRequest.push('Table_tool/Create_source_database' , {
+											params : {
+												from_table_tool : data.id,
+												from_database : $(".source-tools-database .scrool .active").text()
+											} ,
+											success : true
+										}).then(function(){
+											layerData.close();
+										});
 									})
+
 								}
 							})
 						});

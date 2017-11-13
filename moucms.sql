@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : localhost
 Source Server Version : 50505
-Source Host           : localhost:3306
+Source Host           : localhost:3300
 Source Database       : moucms
 
 Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-13 10:45:29
+Date: 2017-11-13 17:39:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,7 +57,7 @@ CREATE TABLE `moucms_error_log` (
   `backtrace` text,
   `uri` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=362 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=364 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of moucms_error_log
@@ -347,6 +347,8 @@ INSERT INTO `moucms_error_log` VALUES ('358', '{\"name\":\"12321\",\"color\":\"\
 INSERT INTO `moucms_error_log` VALUES ('359', '{\"name\":\"12321\",\"color\":\"\",\"uid\":\"32132\",\"index\":\"13213\",\"type\":\"button\",\"from_table\":\"9\"}', '[]', '8', 'Undefined property: Table_tool::$Table_model', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '12', '2017-11-12 04:37:06', '10', '[]', 'api/admin/table_tool/create');
 INSERT INTO `moucms_error_log` VALUES ('360', '{\"name\":\"12321\",\"color\":\"\",\"uid\":\"32132\",\"index\":\"13213\",\"type\":\"button\",\"from_table\":\"9\"}', '[]', '1', 'Call to a member function is_exist() on null', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '12', '2017-11-12 04:37:06', '10', '[]', 'api/admin/table_tool/create');
 INSERT INTO `moucms_error_log` VALUES ('361', '{\"name\":\"\\u5220\\u9664\\u9009\\u4e2d\\u7528\\u6237\",\"icon\":\"trash-o\",\"color\":\"danger\",\"uid\":\"remove-all\",\"index\":\"999\",\"type\":\"button\",\"id\":\"8\",\"from_table\":\"9\"}', '[]', '1', 'Cannot use object of type stdClass as array', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '12', '2017-11-12 09:31:25', '11', '[]', 'api/admin/table_tool/edit');
+INSERT INTO `moucms_error_log` VALUES ('362', '{\"value\":\"312321\",\"key\":\"321321\",\"from_database\":\"Setting_model\"}', '[]', '1', 'Cannot use object of type stdClass as array', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '11', '2017-11-13 10:16:59', '12', '[]', 'api/admin/table_tool/create_source_database');
+INSERT INTO `moucms_error_log` VALUES ('363', '{\"value\":\"312321\",\"key\":\"321321\",\"from_database\":\"Setting_model\"}', '[]', '8', 'Undefined property: stdClass::$from_database', 'F:\\xampp\\htdocs\\moucms\\application\\controllers\\api\\admin\\Table_tool.php', '11', '2017-11-13 10:17:08', '12', '[]', 'api/admin/table_tool/create_source_database');
 
 -- ----------------------------
 -- Table structure for moucms_interface
@@ -365,7 +367,7 @@ CREATE TABLE `moucms_interface` (
   `count` int(11) DEFAULT '0',
   `params` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of moucms_interface
@@ -381,6 +383,7 @@ INSERT INTO `moucms_interface` VALUES ('8', 'Table_field.php', 'edit', 'api/admi
 INSERT INTO `moucms_interface` VALUES ('9', 'Databases.php', 'get', 'api/admin', 'api/admin/databases/get', null, '0', null, null, '0', null);
 INSERT INTO `moucms_interface` VALUES ('10', 'Table_tool.php', 'create', 'api/admin', 'api/admin/table_tool/create', null, '0', null, null, '0', '{\"name\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"color\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"uid\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"index\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"icon\" : { \"max\" : 46 , \"min\" : 0} ,\r\n\"type\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"from_table\" : { \"max\" : 16 , \"min\" : 1}}');
 INSERT INTO `moucms_interface` VALUES ('11', 'Table_tool.php', 'edit', 'api/admin', 'api/admin/table_tool/edit', null, '0', null, null, '0', '{\"name\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"color\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"uid\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"index\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"icon\" : { \"max\" : 46 , \"min\" : 0} ,\r\n\"type\" : { \"max\" : 16 , \"min\" : 1} ,\r\n\"from_table\" : { \"max\" : 16 , \"min\" : 1} , \"id\" : {\"max\":16 , \"min\":1}}');
+INSERT INTO `moucms_interface` VALUES ('12', 'Table_tool.php', 'create_source_database', 'api/admin', 'api/admin/table_tool/create_source_database', null, '0', null, null, '0', '{\"key\":{\"max\":32,\"min\":1} , \"value\":{\"max\":32,\"min\":1} , \"from_database\" : {\"max\":66,\"min\":1} , \"from_table_tool\" : {\"max\" : 11 , \"min\" : 1}}');
 
 -- ----------------------------
 -- Table structure for moucms_interface_group
