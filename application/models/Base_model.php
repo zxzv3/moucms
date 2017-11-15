@@ -94,7 +94,9 @@ class Base_model extends CI_Model {
 	public function get_list($params = array() , $page = 1 , $count = 10 , $select = array() , $is_all  = "Not all"){
 		$page = isset($_GET['page']) ? $this->input->get('page' , true) : $page;
 		if($is_all === "Not all"){
-			$this->db->limit($count , ($page - 1) * $count);
+
+			$page = (($page - 1) * $count);
+			$this->db->limit($count , $page <= 0 ? 0 : $page);
 		}
 		return $this->db->select($select)->order_by('id' , 'desc')->get_where($this->table_name , $params)->result_array();
 	}

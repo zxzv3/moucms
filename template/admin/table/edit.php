@@ -489,7 +489,29 @@
 					title : '数据源',
 					area: ['850px', '700px'], //宽高
 					content: dom.get('source-tools'),
-					success : function(){
+					success : function(element){
+						console.log()
+
+
+						/**
+						 * 刷新数据源
+						 * @return {[type]} [description]
+						 */
+						function reloadSourceData(){
+							$(element).find('.list .data').remove();
+							ApiRequest.push('Table_tool/Reload_source_data' , {
+								params : {
+									from_table_tool : data.id,
+								} ,
+								success : true
+							}).then(function(data){
+								$.each(data.message , function(key , value){
+									$(element).find('.list').append("<tr class='data'><td>" + value.key + "</td><td>" + value.value + "</td><td>" + data.result + "</td><td></td></tr>");
+								})
+							});
+						}
+
+						reloadSourceData();
 
 
 						$("#js-source-tools-database").click(function(){
@@ -499,7 +521,7 @@
 								area: ['550px', '470px'], //宽高
 								content: dom.get('source-tools-database'),
 								success : function(){
-									
+
 									
 									ApiRequest.push('Databases/Get' , { success : true }).then(function(data){
 										$.each(data.result , function( key , value ){
@@ -520,7 +542,7 @@
 											} ,
 											success : true
 										}).then(function(){
-											layerData.close();
+											layer.close(layerData);
 										});
 									})
 
