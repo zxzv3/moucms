@@ -1,5 +1,24 @@
 	<link rel="stylesheet" href="./assets/css/admin/page/table/table.css">
 	<link rel="stylesheet" href="./assets/css/admin/page/table/table-popup.css">
+	<style type="text/css">
+		.select{
+			background-color: #fff;
+			float: left;
+			border:1px dashed #ddd;
+			padding:6px 10px;
+			margin-right: 7px;
+			border-radius: 3px;
+			color:#555;
+			cursor: pointer;
+			padding-right: 26px;
+			position: relative;
+		}
+		.select i{
+			top:7px;
+			right: 9px;
+			position: absolute;
+		}
+	</style>
 </head>
 <body>
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/top-header');?>
@@ -140,10 +159,9 @@
 
 		<div class="box">
 			<h1>顶部工具栏</h1>
-			<div class="tools" id="js-tools" style="border:2px dashed #eee;margin-bottom:30px;padding:19px;">
+			<div class="tools" id="js-tools" style="border:1px dashed #eee;border-radius: 3px; margin-bottom:30px;padding:19px;">
 				<?php
 					foreach ($Tool_lists as $key => $value){
-						
 
 						$data = json_encode($value);
 						if($value['type'] == 'button'){
@@ -151,9 +169,12 @@
 							echo "<button data-data='" . $data . "' class='btn {$value['color']}' data-uid='{$value['uid']}'>{$icon}{$value['tool_name']}</button>";
 						}
 						if($value['type'] == 'select' || $value['type'] == 'search-select-value'){
-							echo "<select data-data='" . $data . "' name='' id=''></select>";
+							$count = count($value['source']);
+							echo "<div class='select' data-data='" . $data . "'>{$value['tool_name']} <span style='font-size:12px;color:#ccc;position: relative;top:-0.5px'>({$count}条)</span> <i class='fa fa-caret-down'></i></div>";
 						}
-
+						if($value['type'] == 'custom'){
+							echo "<div class='select' data-data='" . $data . "'>{$value['tool_name']}  <i class='fa fa-file-code-o' style='font-size:12px;margin-top:0.7px'></i></div>";
+						}
 					}
 				?>
 				
@@ -204,7 +225,7 @@
 					<option value="file">file</option>
 					<option value="editor">editor</option>
 					<option value="makedown">makedown</option>
-					<option value="自定义">自定义</option>
+					<option value="custom">custom</option>
 				</select>
 			</div>
 			<div class="item">
@@ -285,7 +306,7 @@
 					<option value="file">file</option>
 					<option value="editor">editor</option>
 					<option value="makedown">makedown</option>
-					<option value="自定义">自定义</option>
+					<option value="custom">custom</option>
 				</select>
 			</div>
 			<div class="item">
@@ -376,6 +397,7 @@
 					<option value="search-text-value">search-text-value</option>
 					<option value="search-select-value">search-select-value</option>
 					<option value="search-submit">search-submit</option>
+					<option value="custom">custom</option>
 				</select>
 			</div>
 			<!-- <div class="item">
@@ -428,6 +450,10 @@
 				<span>数据源头：</span>
 				<button class="btn" id="js-source-tools" style="position: relative;top: 7px;font-size: 12px;">...</button>
 			</div>
+			<div class="item" style="margin-top: 10px;">
+				<span>数据操作：</span>
+				<button class="btn danger" style="position: relative;top:7px;"><i class="fa fa-trash-o"></i>删除工具</button>
+			</div>
 		</div>
 
 		var source-tools = <div class="source-tools">
@@ -464,14 +490,26 @@
 			</div>
 		</div>
 
-
+		var addItem = <div class="add-item">
+			<div class="data">
+				<div class="item">
+					<span>数据KEY：</span>
+					<input type="text">
+				</div>
+				<div class="item">
+					<span>数据内容：</span>
+					<input type="text">
+				</div>
+			</div>
+		</div>
+	
+	
 	</script>
 	<?php $this->load->view(ADMIN_TEMPLATE . '/template/footer');?>
 	<script type="text/javascript">
 
 
-
-		$("#js-tools input , #js-tools select , #js-tools button").click(function(){
+		$("#js-tools input , #js-tools select , #js-tools button , #js-tools .select").click(function(){
 			var data = $.parseJSON($(this).attr('data-data'));
 			popup.sure({
 				title : '编辑工具' ,
@@ -482,6 +520,9 @@
 					from_table : <?=$Table_data['id']?>
 				} })
 			});
+
+
+
 			$("#js-source-tools").click(function(){
 				//页面层
 				layer.open({
@@ -490,8 +531,6 @@
 					area: ['850px', '700px'], //宽高
 					content: dom.get('source-tools'),
 					success : function(element){
-						console.log()
-
 
 						/**
 						 * 刷新数据源
@@ -505,6 +544,7 @@
 								} ,
 								success : true
 							}).then(function(data){
+								if(data.message.length == 0) return false;
 								$.each(data.message , function(key , value){
 									$(element).find('.list').append("<tr class='data'><td>" + value.key + "</td><td>" + value.value + "</td><td>" + data.result + "</td><td></td></tr>");
 								})
@@ -513,6 +553,17 @@
 
 						reloadSourceData();
 
+						$("#js-source-tools-item").click(function(){
+							layer.open({
+								type: 1,
+								title : '添加单条数据',
+								area: ['550px', '400px'], //宽高
+								content: dom.get('addItem'),
+								success : function(element){
+
+								}
+							})
+						});
 
 						$("#js-source-tools-database").click(function(){
 							var layerData = layer.open({
@@ -521,9 +572,10 @@
 								area: ['550px', '470px'], //宽高
 								content: dom.get('source-tools-database'),
 								success : function(){
-
 									
-									ApiRequest.push('Databases/Get' , { success : true }).then(function(data){
+									ApiRequest.push('Databases/Get' , { success : true , params : {
+										from_table_tool : data.id
+									} }).then(function(data){
 										$.each(data.result , function( key , value ){
 											$(".source-tools-database .scrool").append("<div class='item'>" + value + "</div>");
 										})
@@ -531,7 +583,20 @@
 											$(".source-tools-database .scrool .item").removeClass('active');
 											$(this).addClass('active');
 										});
-										$(".source-tools-database .scrool .item:eq(0)").addClass('active')
+										$(".source-tools-database .scrool .item:eq(0)").addClass('active');
+										$(".source-tools-database #js-value").val(data.message.value)
+										$(".source-tools-database #js-key").val(data.message.key);
+
+										if(data.message.from_database != ''){
+											$(".source-tools-database .scrool .item").removeClass('active');
+										}
+										$(".source-tools-database .scrool .item").each(function(key , value){
+											if($(value).text() == data.message.from_database){
+												$(value).addClass('active')
+											}
+										});
+
+										//from_database
 									});
 
 									$(".source-tools-database #js-save").click(function(){
@@ -543,12 +608,18 @@
 											success : true
 										}).then(function(){
 											layer.close(layerData);
+											reloadSourceData();
 										});
 									})
 
 								}
 							})
 						});
+
+
+
+
+
 					}
 				});
 			})

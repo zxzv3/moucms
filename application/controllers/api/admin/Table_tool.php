@@ -13,8 +13,9 @@ class Table_tool extends interface_lib{
 	 * @return [type] [description]
 	 */
 	public function reload_source_data($params){
-		// $params->from_table_tool;
 		$Table_tool_data = $this->Table_tool_model->get(array( 'id' => $params->from_table_tool ));
+		
+		if($Table_tool_data['from_database'] == '') Moucms::end(true);
 		$this->load->model($Table_tool_data['from_database']);
 		$Data_lists = $this->$Table_tool_data['from_database']->get_list(array() , @$params->page , 30 , array(
 			$Table_tool_data['field_key'],

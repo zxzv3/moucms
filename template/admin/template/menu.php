@@ -9,7 +9,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="item">
+	<!-- <div class="item">
 		<div class="top-menu">
 			<i class="fa fa-user"></i>管理用户
 		</div>
@@ -79,7 +79,7 @@
 				<li>接口日志</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 	<div class="item">
 		<div class="top-menu">
 			<i class="fa fa-user"></i>超级表单
@@ -117,7 +117,7 @@
 		</div>
 	</div>
 
-	<div class="item">
+	<!-- <div class="item">
 		<div class="top-menu">
 			<i class="fa fa-user"></i>日志管理
 		</div>
@@ -126,6 +126,6 @@
 				<li>系统日志</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 	<div class="menu-footer"></div>
 </div>

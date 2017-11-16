@@ -5,6 +5,7 @@ class Databases extends interface_lib{
 		parent::__construct();
 		$this->load->model('Table_model');
 		$this->load->model('Table_group_model');
+		$this->load->model('Table_tool_model');
 	}
 
 
@@ -19,8 +20,14 @@ class Databases extends interface_lib{
 				array_push($file_list, str_replace('.php', '', $value));
 			}
 		}
+		
+		$Table_data = $this->Table_tool_model->get(array( 'id' => $params->from_table_tool ));
 
-		Moucms::end(true , '' , $file_list);
+		Moucms::end(true , array(
+			'from_database' => $Table_data['from_database'] == "" ? "" : $Table_data['from_database'],
+			'key' => $Table_data['field_key'] == "" ? "" : $Table_data['field_key'],
+			'value' => $Table_data['field_value'] == "" ? "" : $Table_data['field_value'],
+		) , $file_list);
 	}
 
 }

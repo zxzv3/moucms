@@ -64,21 +64,23 @@ class Home extends CI_Controller{
 		$this->load->model('Table_tool_model');
 		$this->Table_tool_model->order_by('index' , 'desc');
 		$Tool_lists = $this->Table_tool_model->get_list(array( 'from_table' => $Table_data['id'] ) , 1 , 1 , array() , 'all');
+		
 		foreach ($Tool_lists as &$value) {
+
 
 			// 获取工具栏是否有数据源信息
 			$load_source_database = $value['type'] == 'search-select-value' || $value['type'] == 'select';
 			if($load_source_database){
-				$this->load->model($value['from_database']);
-				echo $value['from_database'];
-				print_r($this);
 
-				$value['source'] = $this->$value['from_database']->get_list(array());
+				if($value['from_database'] != '' && $value['field_key'] != '' && $value['field_value'] != ''){
+					$from_database = $value['from_database'];
+					$this->load->model($from_database);
+					$value['source'] = $this->$from_database->get_list(array());
+				}
+
 			}
 		}
 
-
-		print_r($Tool_lists);
 
 		Loader::view('table/edit' , array(
 			'Tool_lists' => $Tool_lists,

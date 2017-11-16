@@ -250,6 +250,8 @@ input:-webkit-autofill {
   border-radius: 5px;
 }
 .login .item span i {
+  position: relative;
+  top: 3.3px;
   font-size: 21px;
 }
 .login .item label {
